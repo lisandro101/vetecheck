@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import vete.Entidad.Persona;
 import vete.Entidad.Telefono;
-import vete.Persistencia.FachadaPersistencia;
+import vete.Persistencia.Repositorio;
 
 /**
  *
@@ -40,7 +40,7 @@ public class GestorPersona {
         persona.generarUid();
         
         //Persiste el Persona
-        FachadaPersistencia.getInstancia().grabar( persona );
+        Repositorio.getInstancia().grabar( persona );
               
      }
     
@@ -54,7 +54,7 @@ public class GestorPersona {
         //Busca Persona en la persistencia
 //        Vector<Persona> personas = Fachada.getInstancia().buscarPersona( persona );
 //        FIXME
-        List<Persona> personas = FachadaPersistencia.getInstancia().buscarPersona( persona );
+        List<Persona> personas = Repositorio.getInstancia().buscarPersona( persona );
     
         return personas;
         
@@ -66,14 +66,14 @@ public class GestorPersona {
         Persona persona = armarPersona(datosPersona);
         
         //Persiste el Persona
-        FachadaPersistencia.getInstancia().actualizar( persona );
+        Repositorio.getInstancia().actualizar( persona );
         
     }
     
     public void actualizar(Persona persona) {
         
         //Persiste el Persona
-        FachadaPersistencia.getInstancia().actualizar( persona );
+        Repositorio.getInstancia().actualizar( persona );
         
     }
     
@@ -82,13 +82,13 @@ public class GestorPersona {
         //Crea un Persona a partir de la Hash
         Persona persona = armarPersona(datosPersona);
         
-        FachadaPersistencia.getInstancia().borrar( persona );
+        Repositorio.getInstancia().borrar( persona );
         
     }
     
      public void eliminar(Persona persona) {
         
-        FachadaPersistencia.getInstancia().borrar( persona );
+        Repositorio.getInstancia().borrar( persona );
         
     }
     

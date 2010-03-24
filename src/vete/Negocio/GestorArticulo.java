@@ -3,7 +3,7 @@ package vete.Negocio;
 import java.util.HashMap;
 import java.util.List;
 import vete.Entidad.Articulo;
-import vete.Persistencia.FachadaPersistencia;
+import vete.Persistencia.Repositorio;
 
 /**
  *
@@ -39,7 +39,7 @@ public class GestorArticulo {
         articulo.generarUid();
 
         //Persiste el Articulo
-        FachadaPersistencia.getInstancia().grabar(articulo);
+        Repositorio.getInstancia().grabar(articulo);
 
     }
 
@@ -51,7 +51,7 @@ public class GestorArticulo {
         Articulo articulo = armarArticulo(datosArticulo);
 
         //Busca Articulo en la persistencia
-        List<Articulo> articulos = FachadaPersistencia.getInstancia().buscarArticulo(articulo);
+        List<Articulo> articulos = Repositorio.getInstancia().buscarArticulo(articulo);
 
         return articulos;
 
@@ -63,14 +63,14 @@ public class GestorArticulo {
         Articulo articulo = armarArticulo(datosArticulo);
 
         //Persiste el Articulo
-        FachadaPersistencia.getInstancia().actualizar(articulo);
+        Repositorio.getInstancia().actualizar(articulo);
 
     }
 
     public void actualizar(Articulo articulo) {
 
         //Persiste el Articulo
-        FachadaPersistencia.getInstancia().actualizar(articulo);
+        Repositorio.getInstancia().actualizar(articulo);
 
     }
 
@@ -80,14 +80,14 @@ public class GestorArticulo {
         Articulo articulo = armarArticulo(datosArticulo);
 
         //Persiste el Articulo
-        FachadaPersistencia.getInstancia().borrar(articulo);
+        Repositorio.getInstancia().borrar(articulo);
 
     }
 
     public void eliminar(Articulo articulo) {
 
         //Persiste el Articulo
-        FachadaPersistencia.getInstancia().borrar(articulo);
+        Repositorio.getInstancia().borrar(articulo);
 
     }
 

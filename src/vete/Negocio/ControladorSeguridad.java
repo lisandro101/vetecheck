@@ -1,17 +1,7 @@
-/*
- * ControladorSeguridad.java
- * 
- * Created on 21/06/2007, 10:09:44
- * 
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package vete.Negocio;
 
-import com.db4o.ext.Db4oException;
 import java.util.HashMap;
-import java.util.Vector;
+import java.util.List;
 import javax.swing.JOptionPane;
 import vete.Constantes;
 import vete.Entidad.Perfil;
@@ -39,13 +29,13 @@ public class ControladorSeguridad {
         
     }	
     
-    public String ingresarUsuario(HashMap<String,Object> datosUsuario) {
+    public String ingresarUsuario(Usuario usuario) {
         
         
 	String cadenaError = "";
     
 	try {   
-            GestorSeguridad.getInstancia().ingresarUsuario(datosUsuario);   
+            GestorSeguridad.getInstancia().ingresarUsuario(usuario);
 	} 
         catch (Db4oException db4oE) {
             cadenaError = "Se ha producido un error en la Base de Datos.";
@@ -58,13 +48,13 @@ public class ControladorSeguridad {
 	
     }
     
-    public String ingresarPerfil(HashMap<String,Object> datosPerfil) {
+    public String ingresarPerfil(Perfil perfil) {
         
         
 	String cadenaError = "";
     
 	try {   
-            GestorSeguridad.getInstancia().ingresarPerfil(datosPerfil);   
+            GestorSeguridad.getInstancia().ingresarPerfil(perfil);
 	} 
         catch (Db4oException db4oE) {
             cadenaError = "Se ha producido un error en la Base de Datos.";
@@ -96,9 +86,9 @@ public class ControladorSeguridad {
 	
     }
     
-    public Vector<Usuario> buscarUsuario(HashMap<String, Object> datosUsuario) {
+    public List<Usuario> buscarUsuario(HashMap<String, Object> datosUsuario) {
     
-    	Vector<Usuario> usuario = null;
+    	List<Usuario> usuario = null;
         
         try {   
             usuario = GestorSeguridad.getInstancia().buscarUsuario(datosUsuario);
@@ -114,9 +104,9 @@ public class ControladorSeguridad {
     
     }
     
-    public Vector<Perfil> buscarPerfil(HashMap<String, Object> datosPerfil) {
+    public List<Perfil> buscarPerfil(HashMap<String, Object> datosPerfil) {
     
-    	Vector<Perfil> perfil = null;
+    	List<Perfil> perfil = null;
         
         try {   
             perfil = GestorSeguridad.getInstancia().buscarPerfil(datosPerfil);
@@ -132,9 +122,9 @@ public class ControladorSeguridad {
     
     }
     
-    public Vector<Perfil> buscarPerfil(Perfil perfil) {
+    public List<Perfil> buscarPerfil(Perfil perfil) {
     
-    	Vector<Perfil> perfiles = null;
+    	List<Perfil> perfiles = null;
         
         try {   
             perfiles = GestorSeguridad.getInstancia().buscarPerfil(perfil);
@@ -150,9 +140,9 @@ public class ControladorSeguridad {
     
     }
     
-    public Vector<Permiso> buscarPermiso(HashMap<String, Object> datosPermiso) {
+    public List<Permiso> buscarPermiso(HashMap<String, Object> datosPermiso) {
     
-    	Vector<Permiso> permiso = null;
+    	List<Permiso> permiso = null;
         
         try {   
             permiso = GestorSeguridad.getInstancia().buscarPermiso(datosPermiso);

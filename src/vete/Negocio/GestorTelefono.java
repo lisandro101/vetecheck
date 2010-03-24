@@ -3,7 +3,7 @@ package vete.Negocio;
 import java.util.HashMap;
 import java.util.Vector;
 import vete.Entidad.Telefono;
-import vete.Persistencia.FachadaPersistencia;
+import vete.Persistencia.Repositorio;
 
 /**
  *
@@ -39,7 +39,7 @@ public class GestorTelefono {
         telefono.generarUid();
 
         //Persiste el Telefono
-        FachadaPersistencia.getInstancia().grabar(telefono);
+        Repositorio.getInstancia().grabar(telefono);
 
     }
 
@@ -64,14 +64,14 @@ public class GestorTelefono {
         Telefono telefono = armarTelefono(datosTelefono);
 
         //Persiste el Telefono
-        FachadaPersistencia.getInstancia().actualizar(telefono);
+        Repositorio.getInstancia().actualizar(telefono);
 
     }
 
     public void actualizar(Telefono telefono) {
 
         //Persiste el Telefono
-        FachadaPersistencia.getInstancia().actualizar(telefono);
+        Repositorio.getInstancia().actualizar(telefono);
 
     }
 
@@ -81,14 +81,14 @@ public class GestorTelefono {
         Telefono telefono = armarTelefono(datosTelefono);
 
         //Persiste el Telefono
-        FachadaPersistencia.getInstancia().borrar(telefono);
+        Repositorio.getInstancia().borrar(telefono);
 
     }
 
     public void eliminar(Telefono telefono) {
 
         //Persiste el Telefono
-        FachadaPersistencia.getInstancia().borrar(telefono);
+        Repositorio.getInstancia().borrar(telefono);
 
     }
 

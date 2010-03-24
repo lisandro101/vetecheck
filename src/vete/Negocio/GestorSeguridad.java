@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import vete.Entidad.Perfil;
 import vete.Entidad.Permiso;
 import vete.Entidad.Usuario;
-import vete.Persistencia.FachadaPersistencia;
+import vete.Persistencia.Repositorio;
 
 /**
  *
@@ -36,127 +36,55 @@ public class GestorSeguridad {
         return instancia;
     }
 
-    public void ingresarUsuario(HashMap<String, Object> datosUsuario) {
-
-        //Crea un Usuario a partir de la Hash
-        Usuario usuario = armarUsuario(datosUsuario);
+    public void ingresarUsuario(Usuario usuario) {
 
         //Le asigna un uid generado al azar al Usuario
         usuario.generarUid();
 
         //Persiste el Usuario
-        FachadaPersistencia.getInstancia().grabar(usuario);
+        Repositorio.getInstancia().grabar(usuario);
     }
 
-    public void ingresarPerfil(HashMap<String, Object> datosPerfil) {
-
-        //Crea un Perfil a partir de la Hash
-        Perfil perfil = armarPerfil(datosPerfil);
+    public void ingresarPerfil(Perfil perfil) {
 
         //Le asigna un uid generado al azar al Perfil
         perfil.generarUid();
 
         //Persiste el Usuario
-        FachadaPersistencia.getInstancia().grabar(perfil);
+        Repositorio.getInstancia().grabar(perfil);
     }
 
-    public void ingresarPermiso(HashMap<String, Object> datosPermiso) {
-
-        //Crea un Permiso a partir de la Hash
-        Permiso permiso = armarPermiso(datosPermiso);
+    public void ingresarPermiso(Permiso permiso) {
 
         //Le asigna un uid generado al azar al Permiso
         permiso.generarUid();
 
         //Persiste el Usuario
-        FachadaPersistencia.getInstancia().grabar(permiso);
+        Repositorio.getInstancia().grabar(permiso);
     }
 
-    public Usuario armarUsuario(HashMap<String, Object> datosUsuario) {
-
-        Usuario usuario = new Usuario();
-
-        //Recupera los datos del usuario de una Hash y construye un Usuario
-        usuario.setNombre((String) datosUsuario.get("nombre"));
-        usuario.setContrasenia((String) datosUsuario.get("contrasenia"));
-        //usuario.setPerfil((Perfil)datosUsuario.get("perfil"));
-
-        return usuario;
-    }
-
-    public Perfil armarPerfil(HashMap<String, Object> datosPerfil) {
-
-        Perfil perfil = new Perfil();
-
-        //Recupera los datos del perfil de una Hash y construye un Perfil
-        perfil.setNombre((String) datosPerfil.get("nombre"));
-        perfil.setDescripcion((String) datosPerfil.get("descripcion"));
-        perfil.setPermisos((List<Permiso>) datosPerfil.get("permisos"));
-
-
-        return perfil;
-    }
-
-    public Permiso armarPermiso(HashMap<String, Object> datosPermiso) {
-
-        Permiso permiso = new Permiso();
-
-        //Recupera los datos del permiso de una Hash y construye un Permiso
-        permiso.setObjeto((String) datosPermiso.get("objeto"));
-        permiso.setLeer((Boolean) datosPermiso.get("leer"));
-        permiso.setInsertar((Boolean) datosPermiso.get("insertar"));
-        permiso.setActualizar((Boolean) datosPermiso.get("actualizar"));
-        permiso.setBorrar((Boolean) datosPermiso.get("borrar"));
-
-        return permiso;
-    }
-
-    public List<Usuario> buscarUsuario(HashMap<String, Object> datosUsuario) {
-
-
-
-        //Crea un Usuario a partir de la Hash
-        Usuario usuario = armarUsuario(datosUsuario);
+    public List<Usuario> buscarUsuario(Usuario usuario) {
 
         //Busca Cliente en la persistencia
-        List<Usuario> usuarios = FachadaPersistencia.getInstancia().buscarUsuario(usuario);
+        List<Usuario> usuarios = Repositorio.getInstancia().buscarUsuario(usuario);
 
         return usuarios;
-
-    }
-
-    public List<Perfil> buscarPerfil(HashMap<String, Object> datosPerfil) {
-
-
-
-        //Crea un Perfil a partir de la Hash
-        Perfil perfil = armarPerfil(datosPerfil);
-
-        //Busca Cliente en la persistencia
-        List<Perfil> perfiles = FachadaPersistencia.getInstancia().buscarPerfil(perfil);
-
-        return perfiles;
 
     }
 
     public List<Perfil> buscarPerfil(Perfil perfil) {
 
         //Busca Perfil en la persistencia
-        List<Perfil> perfiles = FachadaPersistencia.getInstancia().buscarPerfil(perfil);
+        List<Perfil> perfiles = Repositorio.getInstancia().buscarPerfil(perfil);
 
         return perfiles;
 
     }
 
-    public List<Permiso> buscarPermiso(HashMap<String, Object> datosPermiso) {
-
-
-
-        //Crea un Permiso a partir de la Hash
-        Permiso permiso = armarPermiso(datosPermiso);
+    public List<Permiso> buscarPermiso(Permiso permiso) {
 
         //Busca Cliente en la persistencia
-        List<Permiso> permisos = FachadaPersistencia.getInstancia().buscarPermiso(permiso);
+        List<Permiso> permisos = Repositorio.getInstancia().buscarPermiso(permiso);
 
         return permisos;
 

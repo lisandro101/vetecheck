@@ -1,20 +1,9 @@
-/*
- * GestorDomicilio.java
- * 
- * Created on 19/06/2007, 00:57:21
- * 
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package vete.Negocio;
 
-import com.db4o.ext.Db4oException;
 import java.util.HashMap;
-import java.util.Vector;
+import java.util.List;
 import vete.Entidad.Domicilio;
-import vete.Entidad.Persona;
-import vete.Persistencia.Fachada;
+import vete.Persistencia.Repositorio;
 
 /**
  *
@@ -41,7 +30,7 @@ public class GestorDomicilio {
         return instancia;
     }	
     
-    public void ingresar(HashMap<String, Object> datosDomicilio) throws Db4oException {
+    public void ingresar(HashMap<String, Object> datosDomicilio) {
         
         //Crea un Domicilio a partir de la Hash
         Domicilio domicilio = armarDomicilio(datosDomicilio);
@@ -50,11 +39,11 @@ public class GestorDomicilio {
         domicilio.generarUid();
         
         //Persiste el Domicilio
-        Fachada.getInstancia().grabar( domicilio );
+        Repositorio.getInstancia().grabar( domicilio );
               
      }
     
-    public Vector<Domicilio> buscar(HashMap<String, Object> datosDomicilio) throws Db4oException {
+    public List<Domicilio> buscar(HashMap<String, Object> datosDomicilio) {
         
     
      
@@ -62,44 +51,44 @@ public class GestorDomicilio {
         Domicilio domicilio = armarDomicilio(datosDomicilio);
         
         //TODO Busca Domicilio en la persistencia
-        Vector<Domicilio> domicilios = null; 
+        List<Domicilio> domicilios = null;
 //        domicilios = Fachada.getInstancia().buscarDomicilio( domicilio );
     
         return domicilios;
         
     }
     
-    public void actualizar(HashMap<String, Object> datosDomicilio) throws Db4oException {
+    public void actualizar(HashMap<String, Object> datosDomicilio) {
         
         //Crea un Domicilio a partir de la Hash
         Domicilio domicilio = armarDomicilio(datosDomicilio);
         
         //Persiste el Domicilio
-        Fachada.getInstancia().actualizar( domicilio );
+        Repositorio.getInstancia().actualizar( domicilio );
         
     }
     
-    public void actualizar(Domicilio domicilio) throws Db4oException {
+    public void actualizar(Domicilio domicilio) {
         
         //Persiste el Domicilio
-        Fachada.getInstancia().actualizar( domicilio );
+        Repositorio.getInstancia().actualizar( domicilio );
         
     }
     
-    public void eliminar(HashMap<String, Object> datosDomicilio) throws Db4oException {
+    public void eliminar(HashMap<String, Object> datosDomicilio) {
         
         //Crea un Domicilio a partir de la Hash
         Domicilio domicilio = armarDomicilio(datosDomicilio);
         
         //Persiste el Domicilio
-        Fachada.getInstancia().borrar( domicilio );
+        Repositorio.getInstancia().borrar( domicilio );
         
     }
     
-     public void eliminar(Domicilio domicilio) throws Db4oException {
+     public void eliminar(Domicilio domicilio) {
         
         //Persiste el Domicilio
-        Fachada.getInstancia().borrar( domicilio );
+        Repositorio.getInstancia().borrar( domicilio );
         
     }
     
@@ -116,7 +105,6 @@ public class GestorDomicilio {
         domicilio.setPais((String)datosDomicilio.get("pais"));
         domicilio.setPiso((String) datosDomicilio.get("piso"));
         domicilio.setProvincia((String)datosDomicilio.get("provincia"));
-        domicilio.setPersona((Persona) datosDomicilio.get("persona"));
         
         return domicilio;
     }
