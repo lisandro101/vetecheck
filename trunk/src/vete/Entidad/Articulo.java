@@ -1,179 +1,252 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package vete.Entidad;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
-import java.util.Vector;
-import vete.Interfaz.DetalleFactura;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import vete.Persistencia.IPersistente;
 
 /**
  *
- * @author Silvina
+ * @author Lisandro Nieto
  */
+@Entity
+public class Articulo implements Serializable, IPersistente {
 
+    private static final long serialVersionUID = 1L;
 
-
-public class Articulo {
-    
+    @Id
     private String uid;
     private String codigo;
     private String nombre;
-    private String rubro;
-    private Double costo;
-    private Double precio;
-    private Double margen;
+    private double costo;
+    private double precio;
+    private double margen;
     private String estadoMargen;
-//    private String impuesto;
-    private Double stock;
-    private Double minimo;
-    private Double maximo;
+    private double stock;
+    private double minimo;
+    private double maximo;
     private String detalle;
-    
-    private Vector<Lote> lotes; 
-    private Vector<Rubro> rubros;
-    private Vector<DetalleFactura> detallesFactura;
-    private Vector<Proveedor> proveedores;
-    
-    
+    private boolean borrado;
 
-    public Articulo(){
+    @ManyToOne
+    private Rubro rubro;
+    @OneToMany
+    private List<Proveedor> proveedores;
+
+    public Articulo() {
+        generarUid();
     }
-    
+
+    /**
+     * 
+     */
+    @Override
+    public void generarUid() {
+        if (getUid() == null) {
+            setUid(UUID.randomUUID().toString());
+        }
+    }
+
+    /**
+     * @return the uid
+     */
     public String getUid() {
         return uid;
     }
 
+    /**
+     * @param uid the uid to set
+     */
     public void setUid(String uid) {
         this.uid = uid;
     }
 
-    public void generarUid(){
-        if( getUid() == null ) {
-            setUid(UUID.randomUUID().toString());
-        }
-    }
-    
+    /**
+     * @return the codigo
+     */
     public String getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * @return the nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * @param nombre the nombre to set
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getRubro() {
-        return rubro;
-    }
-
-    public void setRubro(String rubro) {
-        this.rubro = rubro;
-    }
-
-    public Double getCosto() {
+    /**
+     * @return the costo
+     */
+    public double getCosto() {
         return costo;
     }
 
-    public void setCosto(Double costo) {
+    /**
+     * @param costo the costo to set
+     */
+    public void setCosto(double costo) {
         this.costo = costo;
     }
 
-    public Double getPrecio() {
+    /**
+     * @return the precio
+     */
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
-    public Double getMargen() {
+    /**
+     * @return the margen
+     */
+    public double getMargen() {
         return margen;
     }
 
-    public void setMargen(Double margen) {
+    /**
+     * @param margen the margen to set
+     */
+    public void setMargen(double margen) {
         this.margen = margen;
     }
 
-    public Double getStock() {
-        return stock;
-    }
-
-    public void setStock(Double stock) {
-        this.stock = stock;
-    }
-
-    public Double getMinimo() {
-        return minimo;
-    }
-
-    public void setMinimo(Double minimo) {
-        this.minimo = minimo;
-    }
-
-    public Double getMaximo() {
-        return maximo;
-    }
-
-    public void setMaximo(Double maximo) {
-        this.maximo = maximo;
-    }
-
-    public String getDetalle() {
-        return detalle;
-    }
-
-    public void setDetalle(String detalle) {
-        this.detalle = detalle;
-    }
-
+    /**
+     * @return the estadoMargen
+     */
     public String getEstadoMargen() {
         return estadoMargen;
     }
 
+    /**
+     * @param estadoMargen the estadoMargen to set
+     */
     public void setEstadoMargen(String estadoMargen) {
         this.estadoMargen = estadoMargen;
     }
 
-    public Vector<Lote> getLotes() {
-        return lotes;
+    /**
+     * @return the stock
+     */
+    public double getStock() {
+        return stock;
     }
 
-    public void setLotes(Vector<Lote> lotes) {
-        this.lotes = lotes;
+    /**
+     * @param stock the stock to set
+     */
+    public void setStock(double stock) {
+        this.stock = stock;
     }
 
-    public Vector<Rubro> getRubros() {
-        return rubros;
+    /**
+     * @return the minimo
+     */
+    public double getMinimo() {
+        return minimo;
     }
 
-    public void setRubros(Vector<Rubro> rubros) {
-        this.rubros = rubros;
+    /**
+     * @param minimo the minimo to set
+     */
+    public void setMinimo(double minimo) {
+        this.minimo = minimo;
     }
 
-    public Vector<DetalleFactura> getDetallesFactura() {
-        return detallesFactura;
+    /**
+     * @return the maximo
+     */
+    public double getMaximo() {
+        return maximo;
     }
 
-    public void setDetallesFactura(Vector<DetalleFactura> detallesFactura) {
-        this.detallesFactura = detallesFactura;
+    /**
+     * @param maximo the maximo to set
+     */
+    public void setMaximo(double maximo) {
+        this.maximo = maximo;
     }
 
-    public Vector<Proveedor> getProveedores() {
+    /**
+     * @return the detalle
+     */
+    public String getDetalle() {
+        return detalle;
+    }
+
+    /**
+     * @param detalle the detalle to set
+     */
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
+    /**
+     * @return the rubro
+     */
+    public Rubro getRubro() {
+        return rubro;
+    }
+
+    /**
+     * @param rubro the rubro to set
+     */
+    public void setRubro(Rubro rubro) {
+        this.rubro = rubro;
+    }
+
+    /**
+     * @return the proveedores
+     */
+    public List<Proveedor> getProveedores() {
         return proveedores;
     }
 
-    public void setProveedores(Vector<Proveedor> proveedores) {
+    /**
+     * @param proveedores the proveedores to set
+     */
+    public void setProveedores(List<Proveedor> proveedores) {
         this.proveedores = proveedores;
     }
 
+    /**
+     * @return the borrado
+     */
+    public boolean isBorrado() {
+        return borrado;
+    }
+
+    /**
+     * @param borrado the borrado to set
+     */
+    @Override
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
+    }
+
+   
 }

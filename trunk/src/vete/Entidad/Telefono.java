@@ -1,21 +1,26 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package vete.Entidad;
 
+import java.io.Serializable;
 import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import vete.Persistencia.IPersistente;
 
 /**
  *
  * @author Lisandro
  */
-public class Telefono {
+@Entity
+public class Telefono implements Serializable, IPersistente{
+
+    private static final long serialVersionUID = 1L;
+    
+    @Id
     private String uid;
     private String nombre;
     private String codigo;
     private String numero;
+    private boolean borrado;
     
     public Telefono(){
         this.setCodigo("");
@@ -32,6 +37,7 @@ public class Telefono {
         this.uid = uid;
     }
     
+    @Override
     public void generarUid(){
         if( getUid() == null ) {
             setUid(UUID.randomUUID().toString());
@@ -60,6 +66,21 @@ public class Telefono {
     
     public void setNumero(String numero){
         this.numero = numero;
+    }
+
+    /**
+     * @return the borrado
+     */
+    public boolean isBorrado() {
+        return borrado;
+    }
+
+    /**
+     * @param borrado the borrado to set
+     */
+    @Override
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
     }
     
    

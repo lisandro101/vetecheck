@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="VetePU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>vete.Entidad.Articulo</class>
+    <class>vete.Entidad.Cliente</class>
+    <class>vete.Entidad.Domicilio</class>
+    <class>vete.Entidad.Factura</class>
+    <class>vete.Entidad.FacturaCompra</class>
+    <class>vete.Entidad.FacturaVenta</class>
+    <class>vete.Entidad.FormaDePago</class>
+    <class>vete.Entidad.Impuesto</class>
+    <class>vete.Entidad.Perfil</class>
+    <class>vete.Entidad.Permiso</class>
+    <class>vete.Entidad.Persona</class>
+    <class>vete.Entidad.Proveedor</class>
+    <class>vete.Entidad.Rubro</class>
+    <class>vete.Entidad.Telefono</class>
+    <class>vete.Entidad.Usuario</class>
+    <class>vete.Entidad.Vendedor</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/vete"/>
+      <property name="javax.persistence.jdbc.password" value="admin"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.user" value="admin"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+    </properties>
+  </persistence-unit>
+</persistence>
