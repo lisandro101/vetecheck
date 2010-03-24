@@ -7,7 +7,7 @@ package vete.Interfaz;
 
 import javax.swing.JOptionPane;
 import vete.Entidad.Usuario;
-import vete.Persistencia.FachadaPersistencia;
+import vete.Persistencia.Repositorio;
 
 /**
  *
@@ -140,7 +140,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 this.setVisible(false);
                 frm.setVisible(true);
                 this.dispose();
-            } else if (FachadaPersistencia.getInstancia().obtenerPrimero(Usuario.class,
+            } else if (Repositorio.getInstancia().obtenerPrimero(Usuario.class,
                     "SELECT a " +
                     "FROM Usuario a " +
                     "WHERE a.borrado = false" +
