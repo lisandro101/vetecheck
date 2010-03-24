@@ -1,0 +1,12 @@
+2010-03-09 22:59:54.697 GMT : Apache Derby Network Server - 10.5.3.0 - (802917) se ha iniciado y est?° listo para aceptar conexiones en el puerto 1527
+----------------------------------------------------------------
+2010-03-09 22:59:59.367 GMT
+ Arrancando Derby versi??n The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instancia a816c00e-0127-4527-e2f3-ffffcf238b5a
+en el directorio de base de datos C:\Users\Lisandro\Documents\NetBeansProjects\VeteJPA\datos\.netbeans-derby\vete  
+
+Cargador de clases de base de datos iniciado - derby.database.classpath=''
+
+2010-03-09 23:00:06.069 GMT:
+Concluyendo instancia a816c00e-0127-4527-e2f3-ffffcf238b5a
+----------------------------------------------------------------
+2010-03-09 23:00:06.256 GMT Thread[DRDAConnThread_3,5,main] (DATABASE = vete), (DRDAID = {2}), Conclusión de la base de datos 'vete'.
