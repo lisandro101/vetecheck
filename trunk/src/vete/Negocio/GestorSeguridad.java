@@ -1,14 +1,5 @@
-/*
- * GestorSeguridad.java
- * 
- * Created on 21/06/2007, 09:38:01
- * 
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 package vete.Negocio;
 
-import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
 import vete.Entidad.Perfil;

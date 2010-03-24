@@ -6,7 +6,7 @@ import javax.persistence.Query;
 /**
  * Fachada para acceder a los metodos de la persistencia
  *
- * @author Franco Catena, Mario Mariani, Lisandro Nieto, Sebastián Torres
+ * @author Franco Catena, Mario Mariani, Lisandro Nieto, Sebastian Torres
  * @version 1.0
  */
 public class Repositorio {
