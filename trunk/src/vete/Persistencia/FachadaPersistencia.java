@@ -28,15 +28,27 @@ public class FachadaPersistencia {
         return instancia;
     }
     
+    public void grabar(IPersistente obj) {
+        grabar(obj, true);
+    }
+
     public void grabar(IPersistente obj, boolean transaccion) {
         FabricaManejadores.getInstancia().getManejador().grabar(obj, transaccion);
     }
     
+    public <T extends IPersistente> T actualizar(T obj) {
+        return actualizar(obj, true);
+    }
+
     public <T extends IPersistente> T actualizar(T obj, boolean transaccion) {
         return FabricaManejadores.getInstancia().getManejador().actualizar(
                 obj, transaccion);
     }
     
+    public void borrar(IPersistente obj) {
+        borrar(obj, true);
+    }
+
     public void borrar(IPersistente obj, boolean transaccion) {
         FabricaManejadores.getInstancia().getManejador().borrar(
                 obj, transaccion);
@@ -83,7 +95,11 @@ public class FachadaPersistencia {
     public void finalizarTransaccion() {
         FabricaManejadores.getInstancia().getManejador().finalizarTransaccion();
     }
-    
+
+    public void borrarFisico(IPersistente obj) {
+        borrarFisico(obj, true);
+    }
+
     public void borrarFisico(IPersistente obj, boolean transaccion) {
         FabricaManejadores.getInstancia().getManejador().borrarFisico(
                 obj, transaccion);

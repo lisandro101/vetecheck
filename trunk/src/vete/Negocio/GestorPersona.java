@@ -1,20 +1,10 @@
-/*
- * GestorPersona.java
- * 
- * Created on 19/06/2007, 00:57:21
- * 
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package vete.Negocio;
 
-import com.db4o.ext.Db4oException;
 import java.util.HashMap;
-import java.util.Vector;
+import java.util.List;
 import vete.Entidad.Persona;
 import vete.Entidad.Telefono;
-import vete.Persistencia.Fachada;
+import vete.Persistencia.FachadaPersistencia;
 
 /**
  *
@@ -41,7 +31,7 @@ public class GestorPersona {
         return instancia;
     }	
     
-    public void ingresar(HashMap<String, Object> datosPersona) throws Db4oException {
+    public void ingresar(HashMap<String, Object> datosPersona) {
         
         //Crea un Persona a partir de la Hash
         Persona persona = armarPersona(datosPersona);
@@ -50,11 +40,11 @@ public class GestorPersona {
         persona.generarUid();
         
         //Persiste el Persona
-        Fachada.getInstancia().grabar( persona );
+        FachadaPersistencia.getInstancia().grabar( persona );
               
      }
     
-    public Vector<Persona> buscar(HashMap<String, Object> datosPersona) throws Db4oException {
+    public List<Persona> buscar(HashMap<String, Object> datosPersona) {
         
     
      
@@ -64,47 +54,44 @@ public class GestorPersona {
         //Busca Persona en la persistencia
 //        Vector<Persona> personas = Fachada.getInstancia().buscarPersona( persona );
 //        FIXME
-        Vector<Persona> personas = Fachada.getInstancia().buscarPersona( persona );
+        List<Persona> personas = FachadaPersistencia.getInstancia().buscarPersona( persona );
     
         return personas;
         
     }
     
-    public void actualizar(HashMap<String, Object> datosPersona) throws Db4oException {
+    public void actualizar(HashMap<String, Object> datosPersona) {
         
         //Crea un Persona a partir de la Hash
         Persona persona = armarPersona(datosPersona);
         
         //Persiste el Persona
-        Fachada.getInstancia().actualizar( persona );
+        FachadaPersistencia.getInstancia().actualizar( persona );
         
     }
     
-    public void actualizar(Persona persona) throws Db4oException {
+    public void actualizar(Persona persona) {
         
         //Persiste el Persona
-        Fachada.getInstancia().actualizar( persona );
+        FachadaPersistencia.getInstancia().actualizar( persona );
         
     }
     
-    public void eliminar(HashMap<String, Object> datosPersona) throws Db4oException {
+    public void eliminar(HashMap<String, Object> datosPersona) {
         
         //Crea un Persona a partir de la Hash
         Persona persona = armarPersona(datosPersona);
         
-        //Persiste el Persona
-        Fachada.getInstancia().borrar( persona );
+        FachadaPersistencia.getInstancia().borrar( persona );
         
     }
     
-     public void eliminar(Persona persona) throws Db4oException {
+     public void eliminar(Persona persona) {
         
-        //Persiste el Persona
-        Fachada.getInstancia().borrar( persona );
+        FachadaPersistencia.getInstancia().borrar( persona );
         
     }
     
-    @SuppressWarnings("unchecked")
     public Persona armarPersona(HashMap<String, Object> datosPersona){
         
         Persona persona = new Persona();
@@ -121,10 +108,9 @@ public class GestorPersona {
 //        persona.setCondicionIva((String)datosPersona.get("condicionIva"));
         persona.setDetalle((String)datosPersona.get("detalle"));
 	//BETA Manejo del telefono
-        persona.setTelefono((Vector<Telefono>) datosPersona.get("telefono"));
+        persona.setTelefonos((List<Telefono>) datosPersona.get("telefono"));
         //BETA Manejo de domicilio
         persona.setDomicilio(GestorDomicilio.getInstancia().armarDomicilio((HashMap) datosPersona.get("domicilio")));
-        persona.getDomicilio().setPersona(persona);
         //TODO otros datos del persona
         
         return persona;
