@@ -1,14 +1,9 @@
 package vete.Persistencia;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import vete.Persistencia.IPersistente;
 
 /**
  * Clase que contiene un manejador de persistencia
@@ -24,7 +19,7 @@ class Manejador {
         this.em = em;
     }
 
-    void grabar(Object obj, boolean transaccion) {
+    void grabar(Object obj, boolean transaccion){
         if (transaccion) {
             comenzarTransaccion();
             em.merge(obj);
