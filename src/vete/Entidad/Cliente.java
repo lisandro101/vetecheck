@@ -1,55 +1,37 @@
-/*
- * Cliente.java
- *
- * Created on 18/06/2007, 17:52:34
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package vete.Entidad;
 
-import java.util.Vector;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
 
 /**
  *
  * @author Lisandro
  */
+@Entity
+@Inheritance
 public class Cliente extends Persona{
+
+     private static final long serialVersionUID = 1L;
    
-    private String condicionIva;    
-    
-    private Vector<FacturaVenta> facturas;
-    
-    
+    private String condicionIva;
     
     /** Constructor por defecto */
     public Cliente() {
         super();
-        this.setCondicionIva("");
     }
 
+    /**
+     * @return the condicionIva
+     */
     public String getCondicionIva() {
         return condicionIva;
     }
 
+    /**
+     * @param condicionIva the condicionIva to set
+     */
     public void setCondicionIva(String condicionIva) {
-        
-        if (condicionIva == null) {
-            this.condicionIva = "";            
-        }
-        else {
-            this.condicionIva = condicionIva;
-        }
-        
-    }
-    
-    public Vector<FacturaVenta> getFacturas() {
-        return facturas;
-    }
-
-    public void setFacturas(Vector<FacturaVenta> facturas) {
-        this.facturas = facturas;
+        this.condicionIva = condicionIva;
     }
 
 }

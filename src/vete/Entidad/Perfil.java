@@ -1,84 +1,113 @@
-/*
- * Perfil.java
- * 
- * Created on 21/06/2007, 09:25:15
- * 
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package vete.Entidad;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
-import java.util.Vector;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import vete.Persistencia.IPersistente;
 
 /**
  *
  * @author Lisandro
  */
-public class Perfil {
+@Entity
+public class Perfil implements Serializable, IPersistente {
+
+    private static final long serialVersionUID = 1L;
     
+    @Id
     private String uid;
     private String nombre;
     private String descripcion;
-    private Vector<Permiso> permisos;
+    private boolean borrado;
+
+    @OneToMany
+    private List<Permiso> permisos;
 
     public Perfil() {
     }
-    
-    public String getUid() {
-        return uid;
-    }
-    
-    /**
-     * 
-     * @param uid 
-     */
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-    
+
     /**
      * 
      */
+    @Override
     public void generarUid(){
         if( getUid() == null ) {
             setUid(UUID.randomUUID().toString());
         }
     }
-    
-    public String getNombre(){
-        
+
+    /**
+     * @return the uid
+     */
+    public String getUid() {
+        return uid;
+    }
+
+    /**
+     * @param uid the uid to set
+     */
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
         return nombre;
-        
     }
-    
-    public String getDescipcion(){
-        
-        return descripcion;
-        
-    }
-    
-    public void setNombre(String nombre){
-        
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
         this.nombre = nombre;
-        
     }
-    
-    public void setDescripcion(String descripcion){
-        
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-        
     }
-   
-    public Vector<Permiso> getPermisos() {
+
+    /**
+     * @return the permisos
+     */
+    public List<Permiso> getPermisos() {
         return permisos;
     }
 
-    public void setPermisos(Vector<Permiso> permisos) {
-        this.permisos = permisos;
+    /**
+     * @param permisos the permisos to set
+     */
+    public void setPermisos(List<Permiso> permisos) {
+        this.setPermisos(permisos);
     }
-    
-    
+
+    /**
+     * @return the borrado
+     */
+    public boolean isBorrado() {
+        return borrado;
+    }
+
+    /**
+     * @param borrado the borrado to set
+     */
+    @Override
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
+    }
 
 }

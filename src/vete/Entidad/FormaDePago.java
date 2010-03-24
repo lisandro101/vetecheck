@@ -1,25 +1,30 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package vete.Entidad;
 
+import java.io.Serializable;
 import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import vete.Persistencia.IPersistente;
 
 /**
  *
  * @author Lisandro
  */
-public class FormaDePago {
+@Entity
+public class FormaDePago implements Serializable, IPersistente {
+
+    private static final long serialVersionUID = 1L;
     
+    @Id
     private String uid;
     private String nombre;
-    private Double descuento;
+    private double descuento;
+    private boolean borrado;
 
     public FormaDePago(){
     }
     
+    @Override
     public void generarUid(){
         if( getUid() == null ) {
             setUid(UUID.randomUUID().toString());
@@ -42,12 +47,33 @@ public class FormaDePago {
         this.nombre = nombre;
     }
 
-    public Double getDescuento() {
+    /**
+     * @return the descuento
+     */
+    public double getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(Double descuento) {
+    /**
+     * @param descuento the descuento to set
+     */
+    public void setDescuento(double descuento) {
         this.descuento = descuento;
+    }
+
+    /**
+     * @return the borrado
+     */
+    public boolean isBorrado() {
+        return borrado;
+    }
+
+    /**
+     * @param borrado the borrado to set
+     */
+    @Override
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
     }
 
 }

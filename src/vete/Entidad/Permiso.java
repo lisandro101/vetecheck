@@ -1,91 +1,139 @@
-/*
- * Permiso.java
- * 
- * Created on 21/06/2007, 09:31:10
- * 
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package vete.Entidad;
 
+import java.io.Serializable;
 import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import vete.Persistencia.IPersistente;
 
 /**
  *
  * @author Lisandro
  */
-public class Permiso {
+@Entity
+public class Permiso implements Serializable, IPersistente {
+
+    private static final long serialVersionUID = 1L;
     
+    @Id
     private String uid;
     private String objeto;
-    private Boolean actualizar;
-    private Boolean insertar;
-    private Boolean leer;
-    private Boolean borrar;
+    private boolean actualizar;
+    private boolean insertar;
+    private boolean leer;
+    private boolean borrar;
+    private boolean borrado;
 
     public Permiso() {
     }
     
-    public String getUid() {
-        return uid;
-    }
-    
-    /**
-     * 
-     * @param uid 
-     */
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-    
     /**
      * 
      */
+    @Override
     public void generarUid(){
         if( getUid() == null ) {
             setUid(UUID.randomUUID().toString());
         }
     }
-    
+
+    /**
+     * @return the uid
+     */
+    public String getUid() {
+        return uid;
+    }
+
+    /**
+     * @param uid the uid to set
+     */
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    /**
+     * @return the objeto
+     */
     public String getObjeto() {
         return objeto;
     }
 
-    public void setObjeto(String modulo) {
-        this.objeto = modulo;
+    /**
+     * @param objeto the objeto to set
+     */
+    public void setObjeto(String objeto) {
+        this.objeto = objeto;
     }
-    
-    public Boolean getActualizar() {
+
+    /**
+     * @return the actualizar
+     */
+    public boolean isActualizar() {
         return actualizar;
     }
 
-    public void setActualizar(Boolean actualizar) {
+    /**
+     * @param actualizar the actualizar to set
+     */
+    public void setActualizar(boolean actualizar) {
         this.actualizar = actualizar;
     }
 
-    public Boolean getInsertar() {
+    /**
+     * @return the insertar
+     */
+    public boolean isInsertar() {
         return insertar;
     }
 
-    public void setInsertar(Boolean insertar) {
+    /**
+     * @param insertar the insertar to set
+     */
+    public void setInsertar(boolean insertar) {
         this.insertar = insertar;
     }
 
-    public Boolean getLeer() {
+    /**
+     * @return the leer
+     */
+    public boolean isLeer() {
         return leer;
     }
 
-    public void setLeer(Boolean leer) {
+    /**
+     * @param leer the leer to set
+     */
+    public void setLeer(boolean leer) {
         this.leer = leer;
     }
 
-    public Boolean getBorrar() {
+    /**
+     * @return the borrar
+     */
+    public boolean isBorrar() {
         return borrar;
     }
 
-    public void setBorrar(Boolean borrar) {
+    /**
+     * @param borrar the borrar to set
+     */
+    public void setBorrar(boolean borrar) {
         this.borrar = borrar;
     }
 
+    /**
+     * @return the borrado
+     */
+    public boolean isBorrado() {
+        return borrado;
+    }
+
+    /**
+     * @param borrado the borrado to set
+     */
+    @Override
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
+    }
+    
 }

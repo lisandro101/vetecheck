@@ -5,13 +5,23 @@
 
 package vete.Entidad;
 
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author Lisandro
  */
+@Entity
+@Inheritance
 public class FacturaVenta extends Factura{
+
+    private static final long serialVersionUID = 1L;
     
+    @ManyToOne
     private Cliente cliente;
+    @ManyToOne
     private Vendedor vendedor;
 
     public Cliente getCliente() {

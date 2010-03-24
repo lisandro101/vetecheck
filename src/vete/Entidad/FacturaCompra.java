@@ -1,16 +1,20 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package vete.Entidad;
+
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Lisandro
  */
-public class FacturaCompra {
+@Entity
+@Inheritance
+public class FacturaCompra extends Factura{
+
+    private static final long serialVersionUID = 1L;
     
+    @ManyToOne
     private Proveedor proveedor;
 
     public Proveedor getProveedor() {

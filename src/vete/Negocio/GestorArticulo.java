@@ -13,7 +13,7 @@ import com.db4o.ext.Db4oException;
 import java.util.HashMap;
 import java.util.Vector;
 import vete.Entidad.Articulo;
-import vete.Persistencia.Fachada;
+import vete.Persistencia.FachadaPersistencia;
 
 /**
  *
@@ -49,7 +49,7 @@ public class GestorArticulo {
         articulo.generarUid();
         
         //Persiste el Articulo
-        Fachada.getInstancia().grabar( articulo );
+        FachadaPersistencia.getInstancia().grabar(articulo, true);
               
      }
     
@@ -61,7 +61,7 @@ public class GestorArticulo {
         Articulo articulo = armarArticulo(datosArticulo);
         
         //Busca Articulo en la persistencia
-        Vector<Articulo> articulos = Fachada.getInstancia().buscarArticulo( articulo );
+        Vector<Articulo> articulos = FachadaPersistencia.getInstancia().buscarArticulo( articulo );
     
         return articulos;
         

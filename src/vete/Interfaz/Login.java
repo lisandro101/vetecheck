@@ -3,28 +3,27 @@
  *
  * Created on 15 de junio de 2007, 18:05
  */
-
 package vete.Interfaz;
 
 import javax.swing.JOptionPane;
 import vete.Entidad.Usuario;
-import vete.Interfaz.MainFrame;
-import vete.Persistencia.Fachada;
+import vete.Persistencia.FachadaPersistencia;
 
 /**
  *
  * @author  Lisandro
  */
 public class Login extends javax.swing.JFrame {
-    
-     public static MainFrame frm = null;
-     String u = new String ("admin");
-    
+
+    private static final long serialVersionUID = 1L;
+    public static MainFrame frm = null;
+    String u = new String("admin");
+
     /** Creates new form Login */
     public Login() {
         initComponents();
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -134,40 +133,41 @@ public class Login extends javax.swing.JFrame {
 
     @SuppressWarnings("deprecation")
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
-    //if (u.equals(tfUsuario.getText())) {
-    
-      try {
-      Usuario usuario = new Usuario();
-      usuario.setNombre(tfUsuario.getText());
-      if (tfUsuario.getText().equals(u)){
-        frm  = new MainFrame();
-        this.setVisible(false);
-        frm.setVisible(true);
-        this.dispose();
-      }
-      else if (Fachada.getInstancia().buscar(usuario).firstElement().getContrasenia().equals(tfPassword.getText())) {
-        frm  = new MainFrame();
-        this.setVisible(false);
-        frm.setVisible(true);
-        this.dispose();
-      }
-      }
-      catch(Exception e) {JOptionPane.showMessageDialog(null, "Falta ingresar datos","Login Usuario", JOptionPane.ERROR_MESSAGE);}
+
+        try {
+            if (tfUsuario.getText().equals(u)) {
+                frm = new MainFrame();
+                this.setVisible(false);
+                frm.setVisible(true);
+                this.dispose();
+            } else if (FachadaPersistencia.getInstancia().obtenerPrimero(Usuario.class,
+                    "SELECT a " +
+                    "FROM Usuario a " +
+                    "WHERE a.borrado = false" +
+                    "AND a.nombre = " + 
+                    tfUsuario.getText()).getContrasenia().equals(tfPassword.getPassword().toString())) {
+                frm = new MainFrame();
+                this.setVisible(false);
+                frm.setVisible(true);
+                this.dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Falta ingresar datos", "Login Usuario", JOptionPane.ERROR_MESSAGE);
+        }
 
 }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new Login().setVisible(true);
             }
         });
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -177,5 +177,4 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPasswordField tfPassword;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
-    
 }
