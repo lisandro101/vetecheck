@@ -42,7 +42,8 @@ public class GestorArticulo {
     public List<Articulo> buscar(Articulo articulo) {
 
         //Busca Articulo en la persistencia
-        List<Articulo> articulos = Repositorio.getInstancia().buscarArticulo(articulo);
+        //FIXME
+        List<Articulo> articulos = Repositorio.getInstancia().buscar(Articulo.class, "");
 
         return articulos;
 

@@ -1,21 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * PanelArticulos.java
- *
- * Created on 24-mar-2010, 19:16:13
- */
-
 package vete.Interfaz;
 
 /**
  *
- * @author Silvina
+ * @author Lisandro
  */
 public class PanelArticulos extends javax.swing.JPanel {
+
+    private static final long serialVersionUID = 1L;
 
     /** Creates new form PanelArticulos */
     public PanelArticulos() {
@@ -470,71 +461,71 @@ public class PanelArticulos extends javax.swing.JPanel {
 
     private void jbBuscarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarArticuloActionPerformed
 
-        //Realiza la verdadera busqueda
-        this.articulos = ControladorArticulo.getInstancia().buscar(hashArticulo);
-
-        //Cargar la busqueda en la JTable
-        cargarJTableArticulo(articulos);
-
-        limpiarCampos(jpGeneralArticulo);
-        limpiarCampos(jpOpcionalArticulo);
-        jepDetalleArticulo.setText("");
+//        //Realiza la verdadera busqueda
+//        this.articulos = ControladorArticulo.getInstancia().buscar(hashArticulo);
+//
+//        //Cargar la busqueda en la JTable
+//        cargarJTableArticulo(articulos);
+//
+//        limpiarCampos(jpGeneralArticulo);
+//        limpiarCampos(jpOpcionalArticulo);
+//        jepDetalleArticulo.setText("");
 }//GEN-LAST:event_jbBuscarArticuloActionPerformed
 
     private void jtArticuloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtArticuloMouseClicked
 
-        //Carga el articulo seleccionado en la jTable en los textFields
-        cargarCamposArticulo(articulos.get(jtArticulo.getSelectedRow()));
+//        //Carga el articulo seleccionado en la jTable en los textFields
+//        cargarCamposArticulo(articulos.get(jtArticulo.getSelectedRow()));
     }//GEN-LAST:event_jtArticuloMouseClicked
 
     private void jbNuevoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoArticuloActionPerformed
-        String msg;
-
-        //Crea una hash con todos los datos del articulo introducidos
-        HashMap<String, Object> hashArticulo = armarHashArticulo();
-
-        //Si se ha ingresado un nombre de articulo
-        if (!(hashArticulo.get("nombre").equals("") || hashArticulo.get("codigo").equals(""))){
-
-            //Se intenta grabar un vendedor en la Base de Datos
-            msg = ControladorArticulo.getInstancia().ingresar(hashArticulo);
-
-            //Si se produce un error mostrar el dialogo de error
-            if (!(msg.equals(""))){
-                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-            //Sino limpiar los campos
-            else {
-                JOptionPane.showMessageDialog(null, "Articulo ingresado con exito.","Alta Articulo", JOptionPane.INFORMATION_MESSAGE);
-
-                limpiarCampos(jpGeneralArticulo);
-                limpiarCampos(jpOpcionalArticulo);
-                jepDetalleArticulo.setText("");
-
-            }
-        }
-
-        //Sino muestra un dialogo de error
-        else {
-            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Articulo", JOptionPane.ERROR_MESSAGE);
-        }
+//        String msg;
+//
+//        //Crea una hash con todos los datos del articulo introducidos
+//        HashMap<String, Object> hashArticulo = armarHashArticulo();
+//
+//        //Si se ha ingresado un nombre de articulo
+//        if (!(hashArticulo.get("nombre").equals("") || hashArticulo.get("codigo").equals(""))){
+//
+//            //Se intenta grabar un vendedor en la Base de Datos
+//            msg = ControladorArticulo.getInstancia().ingresar(hashArticulo);
+//
+//            //Si se produce un error mostrar el dialogo de error
+//            if (!(msg.equals(""))){
+//                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//            //Sino limpiar los campos
+//            else {
+//                JOptionPane.showMessageDialog(null, "Articulo ingresado con exito.","Alta Articulo", JOptionPane.INFORMATION_MESSAGE);
+//
+//                limpiarCampos(jpGeneralArticulo);
+//                limpiarCampos(jpOpcionalArticulo);
+//                jepDetalleArticulo.setText("");
+//
+//            }
+//        }
+//
+//        //Sino muestra un dialogo de error
+//        else {
+//            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Articulo", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_jbNuevoArticuloActionPerformed
 
     private void jbModificarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarArticuloActionPerformed
 
-        //Modifica el ultimo articulo seleccionado
-        ControladorArticulo.getInstancia().actualizar(cargarArticulo(ultimoArticulo));
-
-
-        limpiarCampos(jpGeneralArticulo);
-        limpiarCampos(jpOpcionalArticulo);
-        jepDetalleArticulo.setText("");
+//        //Modifica el ultimo articulo seleccionado
+//        ControladorArticulo.getInstancia().actualizar(cargarArticulo(ultimoArticulo));
+//
+//
+//        limpiarCampos(jpGeneralArticulo);
+//        limpiarCampos(jpOpcionalArticulo);
+//        jepDetalleArticulo.setText("");
     }//GEN-LAST:event_jbModificarArticuloActionPerformed
 
     private void jbEliminarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarArticuloActionPerformed
 
         //eliminar el ultimo articulo seleccionado
-        ControladorArticulo.getInstancia().borrar(ultimoArticulo);
+//        ControladorArticulo.getInstancia().borrar(ultimoArticulo);
     }//GEN-LAST:event_jbEliminarArticuloActionPerformed
 
 

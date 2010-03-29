@@ -1,14 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * PanelClientes.java
- *
- * Created on 24-mar-2010, 19:16:01
- */
-
 package vete.Interfaz;
 
 /**
@@ -16,6 +5,8 @@ package vete.Interfaz;
  * @author Silvina
  */
 public class PanelClientes extends javax.swing.JPanel {
+
+    private static final long serialVersionUID = 1L;
 
     /** Creates new form PanelClientes */
     public PanelClientes() {
@@ -593,45 +584,45 @@ public class PanelClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfBuscarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarClienteKeyTyped
-
-        HashMap<String,Object> cliente = new HashMap<String,Object>();
-
-        //Se arma el hash con los datos del Cliente
-        cliente.put("codigo", "");
-        cliente.put("nombre", (tfBuscarCliente.getText() == null ? "" : tfBuscarCliente.getText()));
-        cliente.put("cuit", "");
-        cliente.put("mail", "");
-        cliente.put("descuento", new Double(0d));
-        cliente.put("condicionIva", "");
-
-        //Realiza la verdadera busqueda
-        this.clientes = ControladorCliente.getInstancia().buscar(cliente);
-
-        //Cargar la busqueda en la JTable
-        cargarJTableCliente(clientes);
+//
+//        HashMap<String,Object> cliente = new HashMap<String,Object>();
+//
+//        //Se arma el hash con los datos del Cliente
+//        cliente.put("codigo", "");
+//        cliente.put("nombre", (tfBuscarCliente.getText() == null ? "" : tfBuscarCliente.getText()));
+//        cliente.put("cuit", "");
+//        cliente.put("mail", "");
+//        cliente.put("descuento", new Double(0d));
+//        cliente.put("condicionIva", "");
+//
+//        //Realiza la verdadera busqueda
+//        this.clientes = ControladorCliente.getInstancia().buscar(cliente);
+//
+//        //Cargar la busqueda en la JTable
+//        cargarJTableCliente(clientes);
 
     }//GEN-LAST:event_tfBuscarClienteKeyTyped
 
     private void jbBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarClienteMouseClicked
-
-        //Crea una hash con todos los datos del cliente introducidos;
-        HashMap<String, Object> hashCliente = armarHashCliente();
-
-        //Realiza la verdadera busqueda
-        this.clientes = ControladorCliente.getInstancia().buscar(hashCliente);
-
-        //Cargar la busqueda en la JTable
-        cargarJTableCliente(clientes);
-
-        limpiarCampos(jpGeneralCliente);
-        limpiarCampos(jpDomicilioCliente);
-        jepDetalleCliente.setText("");
+//
+//        //Crea una hash con todos los datos del cliente introducidos;
+//        HashMap<String, Object> hashCliente = armarHashCliente();
+//
+//        //Realiza la verdadera busqueda
+//        this.clientes = ControladorCliente.getInstancia().buscar(hashCliente);
+//
+//        //Cargar la busqueda en la JTable
+//        cargarJTableCliente(clientes);
+//
+//        limpiarCampos(jpGeneralCliente);
+//        limpiarCampos(jpDomicilioCliente);
+//        jepDetalleCliente.setText("");
     }//GEN-LAST:event_jbBuscarClienteMouseClicked
 
     private void jtClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtClienteMouseClicked
 
-        //Carga el cliente seleccionado en la jTable en los textFields
-        cargarCamposCliente(clientes.get(jtCliente.getSelectedRow()));
+//        //Carga el cliente seleccionado en la jTable en los textFields
+//        cargarCamposCliente(clientes.get(jtCliente.getSelectedRow()));
     }//GEN-LAST:event_jtClienteMouseClicked
 
     private void cbTelefonoClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTelefonoClienteItemStateChanged
@@ -640,27 +631,27 @@ public class PanelClientes extends javax.swing.JPanel {
 
     private void cbTelefonoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTelefonoClienteActionPerformed
 
-        antesElegido = ultimoElegido;
-        ultimoElegido = cbTelefonoCliente.getSelectedIndex();
-
-        if (ultimoTelefono == null) {
-
-            ultimoTelefono = new List<Telefono>();
-
-            for (int i=0; i < cbTelefonoCliente.getItemCount(); i++){
-                Telefono iTelefono = new Telefono();
-                ultimoTelefono.insertElementAt(iTelefono, i);
-            }
-        }
-
-        //Guarda el telefono que se habia seleccionado antes de cambiar la seleccion
-        ultimoTelefono.get(antesElegido).setNombre(cbTelefonoCliente.getItemAt(antesElegido).toString() == null ? "" : cbTelefonoCliente.getItemAt(antesElegido).toString());
-        ultimoTelefono.get(antesElegido).setCodigo(tfCodigoTelefonoCliente.getText() == null ? "" : tfCodigoTelefonoCliente.getText());
-        ultimoTelefono.get(antesElegido).setNumero(tfNumeroTelefonoCliente.getText() == null ? "" : tfNumeroTelefonoCliente.getText());
-
-        //Carga la info del telefono que se seleccionó
-        tfCodigoTelefonoCliente.setText(ultimoTelefono.get(ultimoElegido).getCodigo());
-        tfNumeroTelefonoCliente.setText(ultimoTelefono.get(ultimoElegido).getNumero());
+//        antesElegido = ultimoElegido;
+//        ultimoElegido = cbTelefonoCliente.getSelectedIndex();
+//
+//        if (ultimoTelefono == null) {
+//
+//            ultimoTelefono = new List<Telefono>();
+//
+//            for (int i=0; i < cbTelefonoCliente.getItemCount(); i++){
+//                Telefono iTelefono = new Telefono();
+//                ultimoTelefono.insertElementAt(iTelefono, i);
+//            }
+//        }
+//
+//        //Guarda el telefono que se habia seleccionado antes de cambiar la seleccion
+//        ultimoTelefono.get(antesElegido).setNombre(cbTelefonoCliente.getItemAt(antesElegido).toString() == null ? "" : cbTelefonoCliente.getItemAt(antesElegido).toString());
+//        ultimoTelefono.get(antesElegido).setCodigo(tfCodigoTelefonoCliente.getText() == null ? "" : tfCodigoTelefonoCliente.getText());
+//        ultimoTelefono.get(antesElegido).setNumero(tfNumeroTelefonoCliente.getText() == null ? "" : tfNumeroTelefonoCliente.getText());
+//
+//        //Carga la info del telefono que se seleccionó
+//        tfCodigoTelefonoCliente.setText(ultimoTelefono.get(ultimoElegido).getCodigo());
+//        tfNumeroTelefonoCliente.setText(ultimoTelefono.get(ultimoElegido).getNumero());
     }//GEN-LAST:event_cbTelefonoClienteActionPerformed
 
     private void tfNumeroTelefonoClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroTelefonoClienteFocusLost
@@ -669,61 +660,61 @@ public class PanelClientes extends javax.swing.JPanel {
 
     private void jbNuevoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNuevoClienteMouseClicked
 
-        String msg;
-
-        //Crea una hash con todos los datos del cliente introducidos
-        HashMap<String, Object> hashCliente = armarHashCliente();
-
-        //Si se ha ingresado un nombre de cliente
-        if (!(hashCliente.get("nombre").equals("") || hashCliente.get("codigo").equals("") )){
-
-            //Se intenta grabar un vendedor en la Base de Datos
-            msg = ControladorCliente.getInstancia().ingresar(hashCliente);
-
-            //Si se produce un error mostrar el dialogo de error
-            if (!(msg.equals(""))){
-                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-            //Sino limpiar los campos
-            else {
-                JOptionPane.showMessageDialog(null, "Cliente ingresado con exito.","Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
-
-                limpiarCampos(jpGeneralCliente);
-                limpiarCampos(jpDomicilioCliente);
-                jepDetalleCliente.setText("");
-
-            }
-        }
-
-        //Sino muestra un dialogo de error
-        else {
-            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Cliente", JOptionPane.ERROR_MESSAGE);
-        }
+//        String msg;
+//
+//        //Crea una hash con todos los datos del cliente introducidos
+//        HashMap<String, Object> hashCliente = armarHashCliente();
+//
+//        //Si se ha ingresado un nombre de cliente
+//        if (!(hashCliente.get("nombre").equals("") || hashCliente.get("codigo").equals("") )){
+//
+//            //Se intenta grabar un vendedor en la Base de Datos
+//            msg = ControladorCliente.getInstancia().ingresar(hashCliente);
+//
+//            //Si se produce un error mostrar el dialogo de error
+//            if (!(msg.equals(""))){
+//                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//            //Sino limpiar los campos
+//            else {
+//                JOptionPane.showMessageDialog(null, "Cliente ingresado con exito.","Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+//
+//                limpiarCampos(jpGeneralCliente);
+//                limpiarCampos(jpDomicilioCliente);
+//                jepDetalleCliente.setText("");
+//
+//            }
+//        }
+//
+//        //Sino muestra un dialogo de error
+//        else {
+//            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Cliente", JOptionPane.ERROR_MESSAGE);
+//        }
 
     }//GEN-LAST:event_jbNuevoClienteMouseClicked
 
     private void jbModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbModificarClienteMouseClicked
 
-        //Modifica el ultimo cliente seleccionado
-        ControladorCliente.getInstancia().actualizar(cargarCliente(ultimoCliente));
-
-
-        limpiarCampos(jpGeneralCliente);
-        limpiarCampos(jpDomicilioCliente);
-        jepDetalleCliente.setText("");
+//        //Modifica el ultimo cliente seleccionado
+//        ControladorCliente.getInstancia().actualizar(cargarCliente(ultimoCliente));
+//
+//
+//        limpiarCampos(jpGeneralCliente);
+//        limpiarCampos(jpDomicilioCliente);
+//        jepDetalleCliente.setText("");
     }//GEN-LAST:event_jbModificarClienteMouseClicked
 
     private void jbEliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEliminarClienteMouseClicked
 
-        //eliminar el ultimo cliente seleccionado
-        ControladorCliente.getInstancia().borrar(ultimoCliente);
+//        //eliminar el ultimo cliente seleccionado
+//        ControladorCliente.getInstancia().borrar(ultimoCliente);
     }//GEN-LAST:event_jbEliminarClienteMouseClicked
 
     private void jbLimpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarClienteActionPerformed
 
-        limpiarCampos(jpGeneralCliente);
-        limpiarCampos(jpDomicilioCliente);
-        jepDetalleCliente.setText("");
+//        limpiarCampos(jpGeneralCliente);
+//        limpiarCampos(jpDomicilioCliente);
+//        jepDetalleCliente.setText("");
     }//GEN-LAST:event_jbLimpiarClienteActionPerformed
 
 

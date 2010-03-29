@@ -16,13 +16,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="900" max="32767" attributes="0"/>
           <Component id="jpCliente" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="372" max="32767" attributes="0"/>
           <Component id="jpCliente" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -42,7 +40,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="spCliente" pref="753" max="32767" attributes="0"/>
+                          <Component id="spCliente" pref="757" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pbCliente" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -172,7 +170,7 @@
                                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel11" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="tfNombreCliente" alignment="0" pref="463" max="32767" attributes="1"/>
+                                          <Component id="tfNombreCliente" alignment="0" pref="467" max="32767" attributes="1"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -190,11 +188,11 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="tfCodigoTelefonoCliente" min="-2" pref="61" max="-2" attributes="2"/>
                                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                                              <Component id="tfNumeroTelefonoCliente" pref="361" max="32767" attributes="0"/>
+                                              <Component id="tfNumeroTelefonoCliente" pref="365" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="jLabel67" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="cbCondicionIvaCliente" pref="335" max="32767" attributes="0"/>
+                                              <Component id="cbCondicionIvaCliente" pref="339" max="32767" attributes="0"/>
                                               <EmptySpace min="93" pref="93" max="93" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -694,7 +692,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane10" pref="726" max="32767" attributes="0"/>
+                              <Component id="jScrollPane10" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -776,7 +774,7 @@
                       <Component id="jbVenderCliente" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jbLimpiarCliente" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                       <Component id="jbOpcionesCliente" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
