@@ -1,9 +1,7 @@
 package vete.Negocio;
 
-import java.util.HashMap;
 import java.util.List;
 import vete.Entidad.Cliente;
-import vete.Entidad.Telefono;
 import vete.Persistencia.Repositorio;
 
 /**
@@ -44,7 +42,8 @@ public class GestorCliente {
     public List<Cliente> buscar(Cliente cliente) {
 
         //Busca Cliente en la persistencia
-        List<Cliente> clientes = Repositorio.getInstancia().buscarCliente(cliente);
+        //FIXME
+        List<Cliente> clientes = Repositorio.getInstancia().buscar(Cliente.class, "");
 
         return clientes;
 

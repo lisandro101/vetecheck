@@ -1,28 +1,10 @@
-/*
- * NewJFrame.java
- *
- * Created on 8 de mayo de 2007, 01:33
- */
 package vete.Interfaz;
 
 import java.awt.Component;
 import java.awt.Container;
 import java.util.List;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-import vete.Entidad.Articulo;
-import vete.Entidad.Cliente;
-import vete.Entidad.Domicilio;
-import vete.Entidad.Perfil;
-import vete.Entidad.Permiso;
-import vete.Entidad.Persona;
-import vete.Entidad.Telefono;
-import vete.Entidad.Usuario;
-import vete.Negocio.ControladorArticulo;
-import vete.Negocio.ControladorCliente;
-import vete.Negocio.ControladorSeguridad;
 
 /**
  *
@@ -33,29 +15,41 @@ public class MainFrame extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
 
     /* Atributos */
-    public static MainFrame mf = null;
-    private List<Cliente> clientes = null;
-    private List<Articulo> articulos = null;
-    private List<Object> objetos = null;
-    //List<Perfil> perfiles = null;
-    private Cliente ultimoCliente = null;
-    private Articulo ultimoArticulo = null;
-    private Perfil ultimoPerfil = null;
-    private Usuario ultimoUsuario = null;
-    private List<Telefono> ultimoTelefono = null;
-    private Domicilio ultimoDomicilio;
-    int antesElegido = -1;
-    int ultimoElegido = 0;
+    private PanelArticulos panelArticulos;
+    private PanelUsuarios panelUsuarios;
+    private PanelProveedores panelProveedores;
+    private PanelConfigurar panelConfigurar;
+    private PanelComprar panelComprar;
+    private PanelVender panelVender;
 
     /** Creates new form NewJFrame */
     public MainFrame() {
         initComponents();
-        MainFrame.mf = this;
+        inicializar();
         this.setExtendedState(MAXIMIZED_BOTH);
-        spCliente.setDividerLocation(.70);
-        spArticulo.setDividerLocation(.70);
-        tfCuitCliente.setInputVerifier(new ValidadorCUIT());
-        tfCuitProveedor.setInputVerifier(new ValidadorCUIT());
+//        spCliente.setDividerLocation(.70);
+//        spArticulo.setDividerLocation(.70);
+//        tfCuitCliente.setInputVerifier(new ValidadorCUIT());
+//        tfCuitProveedor.setInputVerifier(new ValidadorCUIT());
+    }
+
+    private void inicializar() {
+        panelProveedores = new PanelProveedores();
+        panelArticulos = new PanelArticulos();
+        panelUsuarios = new PanelUsuarios();
+        panelConfigurar = new PanelConfigurar();
+        panelComprar = new PanelComprar();
+        panelVender = new PanelVender();
+
+        jtpPrincipal.add("    Proveedores    ", panelProveedores);
+        jtpPrincipal.add("     Articulos     ", panelArticulos);
+        jtpPrincipal.add("     Usuarios      ", panelUsuarios);
+        jtpPrincipal.add("      Vender       ", panelVender);
+        jtpPrincipal.add("      Comprar      ", panelComprar);
+        jtpPrincipal.add("     Configurar    ", panelConfigurar);
+
+        //actualizarFecha();
+
     }
 
     /** This method is called from within the constructor to
@@ -66,9 +60,6 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
         jtpPrincipal = new javax.swing.JTabbedPane();
         jLabel31 = new javax.swing.JLabel();
         tfUsuario = new javax.swing.JTextField();
@@ -78,14 +69,14 @@ public class MainFrame extends javax.swing.JFrame {
         setTitle("Sanatorio Veterinario Cuyo");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jtpPrincipal.setFont(new java.awt.Font("Arial", 0, 12));
+        jtpPrincipal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        jLabel31.setFont(new java.awt.Font("Arial", 0, 12));
+        jLabel31.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel31.setText("Usuario");
 
         tfUsuario.setEditable(false);
 
-        jbSalir.setFont(new java.awt.Font("Arial", 0, 12));
+        jbSalir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,297 +123,77 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-List aObjeto (List us){
-    
-    List<Object> o = null;
-        
-        for (int i=0; i<us.size(); i++){
-            
-            o.set(i,us.get(i));
-            
+    List aObjeto(List us) {
+
+        List<Object> o = null;
+
+        for (int i = 0; i < us.size(); i++) {
+
+            o.set(i, us.get(i));
+
         }
-            
-    return us;
-}
 
-public HashMap<String, Object> armarHashPerfil(){
-    
-    List<Permiso> permisos = null;
-    HashMap<String,Object> perfil = new HashMap<String,Object>();
-    	
-    //Se arma el hash con los datos del Cliente
-    perfil.put("nombre", (tfNombrePerfil.getText() == null ? "" : tfNombrePerfil.getText()));
-    perfil.put("descripcion", (tfDescripcionPerfil.getText() == null ? "" : tfDescripcionPerfil.getText()));
-    perfil.put("permisos", (permisos == null ? armarPermisoVacio() : permisos));
-    
-    
-    return perfil;
-}
-
-public List<Permiso> armarPermisoVacio() {
-    
-    List<Permiso> permisos = new List<Permiso>();
-    permisos.add(new Permiso());
-    
-    for (int i = 0; i <= permisos.size() - 1; i++) {
-        
-        permisos.elementAt(i).setObjeto("");
-        permisos.elementAt(i).setLeer(false);
-        permisos.elementAt(i).setInsertar(false);
-        permisos.elementAt(i).setActualizar(false);
-        permisos.elementAt(i).setBorrar(false);
-        
+        return us;
     }
-    
-    
-    
-    return permisos;
-    
-}
-
-public Usuario armarUsuario(){
-    
-    Usuario usuario = new Usuario();
-    	
-    usuario.setNombre(tfNombreUsuario.getText() == null ? "" : tfNombreUsuario.getText());
-    usuario.setContrasenia((jpfContraseniaUsuario.getPassword().toString()) == null ? "" : jpfContraseniaUsuario.getPassword().toString()));
-    usuario.setPerfil(cbPerfilUsuario.getSelectedItem().toString() == null ? "" : cbPerfilUsuario.getSelectedItem().toString()));
-    
-    return usuario;
-}
-       
-private void cargarCamposCliente(Cliente cliente){
-    
-   this.ultimoCliente = cliente;
-    
-   tfCodigoCliente.setText( cliente.getCodigo() );
-   tfNombreCliente.setText( cliente.getNombre() );
-   tfCuitCliente.setText( cliente.getCuit() );
-   tfMailCliente.setText( cliente.getMail() );
-   tfDescuentoCliente.setText( cliente.getDescuento().toString() );
-   cbEstadoDescuentoCliente.setSelectedItem( cliente.getEstadoDescuento());
-   cbCondicionIvaCliente.setSelectedItem( cliente.getCondicionIva());
-   jepDetalleCliente.setText( cliente.getDetalle() );
-   
-   //Carga del telefono
-   cargarCamposTelefonoCliente(cliente.getTelefono());
-   
-   //Carga del domicilio
-   cargarCamposDomicilioCliente(cliente.getDomicilio());
-   
-}
-
-private void cargarCamposTelefonoCliente(List<Telefono> telefono){
-    
-   this.ultimoTelefono = telefono;
-    
-//  BETA carga de datos relacionados con el telefono
-    for (int i=0; i < ultimoTelefono.size(); i++){
-        
-            if (telefono.elementAt(i).getNombre().toString().equals(cbTelefonoCliente.getSelectedItem().toString())){
-                tfCodigoTelefonoCliente.setText(telefono.elementAt(i).getCodigo());
-                tfNumeroTelefonoCliente.setText(telefono.elementAt(i).getNumero());
-            }
-               
-    }
-   
-}
-
-private void cargarCamposDomicilioCliente(Domicilio domicilio){
-    
-   this.ultimoDomicilio = domicilio;
-    
-// BETA realizar la carga de datos relacionados con el domicilio
-   tfCalleCliente.setText(domicilio.getCalle());
-   tfNumeroCliente.setText(domicilio.getNumero());
-   tfPisoCliente.setText(domicilio.getPiso());
-   tfDeptoCliente.setText(domicilio.getDepartamento());
-   cbLocalidadCliente.setSelectedItem(domicilio.getLocalidad());
-   cbProvinciaCliente.setSelectedItem(domicilio.getProvincia());
-   cbPaisCliente.setSelectedItem(domicilio.getPais());
-   
-}
-
-private void cargarCamposArticulo(Articulo articulo) {
-    
-    this.ultimoArticulo = articulo;
-    
-    tfCodigoArticulo.setText( articulo.getCodigo() );
-    tfNombreArticulo.setText( articulo.getNombre() );
-    cbRubroArticulo.setSelectedItem( articulo.getRubro());
-    tfCostoArticulo.setText( articulo.getCosto().toString() );
-    tfPrecioArticulo.setText( articulo.getPrecio().toString() );
-    sMargenArticulo.setValue(articulo.getMargen());
-    cbEstadoMargenArticulo.setSelectedItem( articulo.getEstadoMargen());
-    //Impuesto
-    tfStockArticulo.setText( articulo.getStock().toString() );
-    sMinimoArticulo.setValue(articulo.getMinimo());
-    sMaximoArticulo.setValue(articulo.getMaximo());
-    jepDetalleArticulo.setText( articulo.getDetalle() );
-     
-}
 
 private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
-    
+
     salir();
-    
+
 }//GEN-LAST:event_jbSalirMouseClicked
 
-public void cargarJTableCliente(List<Cliente> clientes){
-    
-    String columnas[] = {"Codigo", "Nombre", "CUIT"};
-    
-    DefaultTableModel dtmCliente = new DefaultTableModel(columnas, 0);
-    
-    jtCliente.setModel(dtmCliente);
-    
-    if (!(clientes.isEmpty())) {
-        
-        for (int i = 0; i < clientes.size(); i++) {
-        
-            Cliente cli = clientes.elementAt(i);
-            String[] fila = {cli.getCodigo(), cli.getNombre(), cli.getCuit()};
-//            JOptionPane.showMessageDialog(null, cli.getCodigo(),"ERROR", JOptionPane.ERROR_MESSAGE);
-            dtmCliente.addRow(fila);
-                
-        }
-        
-    }
-    
-    
-    
-}
-
-private void cargarJTableArticulo(List<Articulo> articulos) {
-
-    String columnas[] = {"Codigo", "Nombre", "Rubro"};
-
-    DefaultTableModel dtmArticulo = new DefaultTableModel(columnas, 0);
-
-    jtArticulo.setModel(dtmArticulo);
-
-    for (int i = 0; i <= articulos.size() - 1; i++) {
-
-        Articulo art = articulos.elementAt(i);
-        String[] fila = {art.getCodigo(), art.getNombre(), art.getRubro()};
-
-        dtmArticulo.addRow(fila);
-    }
-}
-    
-private Cliente cargarCliente(Cliente cliente){
-    
-    cliente.setCodigo((tfCodigoCliente.getText() == null ? "" : tfCodigoCliente.getText()));
-    cliente.setNombre((tfNombreCliente.getText() == null ? "" : tfNombreCliente.getText()));
-    cliente.setCuit((tfCuitCliente.getText() == null ? "" : tfCuitCliente.getText()));
-    cliente.setMail((tfMailCliente.getText() == null ? "" : tfMailCliente.getText()));
-    cliente.setDescuento(((tfDescuentoCliente.getText() == null || tfDescuentoCliente.getText().equals("")) ? new Double(0.0) : new Double(tfDescuentoCliente.getText())));
-    cliente.setEstadoDescuento((cbEstadoDescuentoCliente.getSelectedItem().toString() == null ? "" : cbEstadoDescuentoCliente.getSelectedItem().toString()));
-    cliente.setCondicionIva((cbCondicionIvaCliente.getSelectedItem().toString() == null ? "" : cbCondicionIvaCliente.getSelectedItem().toString()));
-    cliente.setDetalle((jepDetalleCliente.getText() == null ? "" : jepDetalleCliente.getText()));
-    
-//    TODO carga de datos relacionados con el domicilio
-//    cliente.getDomicilio().setCalle((tfCalleCliente.getText() == null ? "" : tfCalleCliente.getText()));
-//    cliente.getDomicilio().setNumero((tfNumeroCliente.getText() == null ? "" : tfNumeroCliente.getText()));
-//    cliente.getDomicilio().setPiso((tfPisoCliente.getText() == null ? "" : tfPisoCliente.getText()));
-//    cliente.getDomicilio().setDepartamento((tfDeptoCliente.getText() == null ? "" : tfDeptoCliente.getText()));
-//    cliente.getDomicilio().setLocalidad((cbLocalidadCliente.getSelectedItem().toString() == null ? "" : cbLocalidadCliente.getSelectedItem().toString()));
-//    cliente.getDomicilio().setProvincia((cbProvinciaCliente.getSelectedItem().toString() == null ? "" : cbProvinciaCliente.getSelectedItem().toString()));
-//    cliente.getDomicilio().setPais((cbPaisCliente.getSelectedItem().toString() == null ? "" : cbPaisCliente.getSelectedItem().toString()));
-    
-    cargarDomicilioCliente(cliente);
-    
-    return cliente;
-    
-}
-
-private void cargarDomicilioCliente(Cliente cliente){
-    
-    cliente.getDomicilio().setCalle((tfCalleCliente.getText() == null ? "" : tfCalleCliente.getText()));
-    cliente.getDomicilio().setNumero((tfNumeroCliente.getText() == null ? "" : tfNumeroCliente.getText()));
-    cliente.getDomicilio().setPiso((tfPisoCliente.getText() == null ? "" : tfPisoCliente.getText()));
-    cliente.getDomicilio().setDepartamento((tfDeptoCliente.getText() == null ? "" : tfDeptoCliente.getText()));
-    cliente.getDomicilio().setLocalidad((cbLocalidadCliente.getSelectedItem().toString() == null ? "" : cbLocalidadCliente.getSelectedItem().toString()));
-    cliente.getDomicilio().setProvincia((cbProvinciaCliente.getSelectedItem().toString() == null ? "" : cbProvinciaCliente.getSelectedItem().toString()));
-    cliente.getDomicilio().setPais((cbPaisCliente.getSelectedItem().toString() == null ? "" : cbPaisCliente.getSelectedItem().toString()));
-    
-}
-
-private Articulo cargarArticulo(Articulo articulo){
-    
-    articulo.setCodigo((tfCodigoArticulo.getText() == null ? "" : tfCodigoArticulo.getText()));
-    articulo.setNombre((tfNombreArticulo.getText() == null ? "" : tfNombreArticulo.getText()));
-    articulo.setRubro((cbRubroArticulo.getSelectedItem().toString() == null ? "" : cbRubroArticulo.getSelectedItem().toString()));
-    articulo.setCosto((tfCostoArticulo.getText() == null || tfCostoArticulo.getText().equals("")) ? new Double(0.0) : new Double(tfCostoArticulo.getText()));
-    articulo.setPrecio((tfPrecioArticulo.getText() == null || tfPrecioArticulo.getText().equals("")) ? new Double(0.0) : new Double(tfPrecioArticulo.getText()));
-    articulo.setMargen((sMargenArticulo.getValue().toString() == null || sMargenArticulo.getValue().toString().equals("")) ? new Double(0.0) : new Double(sMargenArticulo.getValue().toString()));
-    articulo.setEstadoMargen((cbEstadoMargenArticulo.getSelectedItem().toString() == null ? "" : cbEstadoMargenArticulo.getSelectedItem().toString()));
-    //impuesto
-    articulo.setStock((tfStockArticulo.getText() == null || tfStockArticulo.getText().equals("")) ? new Double(0.0) : new Double(tfStockArticulo.getText()));
-    articulo.setMinimo((sMinimoArticulo.getValue().toString() == null || sMinimoArticulo.getValue().toString().equals("")) ? new Double(0.0) : new Double(sMinimoArticulo.getValue().toString()));
-    articulo.setMaximo((sMaximoArticulo.getValue().toString() == null || sMaximoArticulo.getValue().toString().equals("")) ? new Double(0.0) : new Double(sMaximoArticulo.getValue().toString()));
-    articulo.setDetalle((jepDetalleArticulo.getText() == null ? "" : jepDetalleArticulo.getText()));
-    
-    return articulo;
-    
-}
-
 private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-    salir();    
+    
+    salir();
+
 }//GEN-LAST:event_jbSalirActionPerformed
 
-/**
- * Limpia los campos de el contenedor.
- * @param contenedor 
- */
-public void limpiarCampos(Container contenedor) {
-        
-    Component[] componentes = contenedor.getComponents();
-        
+    /**
+     * Limpia los campos de el contenedor.
+     * @param contenedor
+     */
+    public void limpiarCampos(Container contenedor) {
+
+        Component[] componentes = contenedor.getComponents();
+
         for (int i = 0; i < componentes.length; i++) {
             if (componentes[i] instanceof JTextField) {
                 ((JTextField) componentes[i]).setText("");
-            }
-            else if (componentes[i] instanceof JComboBox) {
+            } else if (componentes[i] instanceof JComboBox) {
                 ((JComboBox) componentes[i]).setSelectedIndex(0);
             }
         }
-}
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             @Override
             public void run() {
                 new MainFrame().setVisible(true);
             }
         });
     }
-    
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
-        
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+
         salir();
-        
-    }     
-    
-    private void salir(){
-        
-        Fachada.getInstancia().desconectar();
+
+    }
+
+    private void salir() {
+
         this.dispose();
         System.exit(0);
-        
+
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JButton jbSalir;
     private javax.swing.JTabbedPane jtpPrincipal;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
-    
 }

@@ -31,10 +31,7 @@ public class GestorPersona {
         return instancia;
     }	
     
-    public void ingresar(HashMap<String, Object> datosPersona) {
-        
-        //Crea un Persona a partir de la Hash
-        Persona persona = armarPersona(datosPersona);
+    public void ingresar(Persona persona) {
         
         //Le asigna un uid generado al azar al Persona
         persona.generarUid();
@@ -44,17 +41,11 @@ public class GestorPersona {
               
      }
     
-    public List<Persona> buscar(HashMap<String, Object> datosPersona) {
-        
-    
-     
-        //Crea un Persona a partir de la Hash
-        Persona persona = armarPersona(datosPersona);
-        
+    public List<Persona> buscar(Persona persona) {
+                
         //Busca Persona en la persistencia
-//        Vector<Persona> personas = Fachada.getInstancia().buscarPersona( persona );
-//        FIXME
-        List<Persona> personas = Repositorio.getInstancia().buscarPersona( persona );
+        //FIXME
+        List<Persona> personas = Repositorio.getInstancia().buscar( Persona.class, "" );
     
         return personas;
         

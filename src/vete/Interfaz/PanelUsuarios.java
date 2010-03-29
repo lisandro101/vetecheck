@@ -1,21 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * PanelUsuarios.java
- *
- * Created on 24-mar-2010, 19:17:17
- */
-
 package vete.Interfaz;
+
+import javax.swing.JOptionPane;
+import vete.Entidad.Usuario;
+import vete.Negocio.ControladorSeguridad;
 
 /**
  *
- * @author Silvina
+ * @author Lisandro
  */
 public class PanelUsuarios extends javax.swing.JPanel {
+
+    private static final long serialVersionUID = 1L;
 
     /** Creates new form PanelUsuarios */
     public PanelUsuarios() {
@@ -353,148 +348,148 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
     private void jbNuevoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNuevoUsuarioMouseClicked
 
-        String msg;
-
-        //Crea una hash con todos los datos del usuario introducidos
-        HashMap<String, Object> hashUsuario = armarUsuario();
-
-        //Si se han ingresado los datos del usuario
-        if (!(hashUsuario.get("nombre").equals("") || hashUsuario.get("contrasenia").equals("") || hashUsuario.get("perfil").equals(""))){
-
-            //Se intenta grabar un usuario en la Base de Datos
-            msg = ControladorSeguridad.getInstancia().ingresarUsuario(hashUsuario);
-
-            //Si se produce un error mostrar el dialogo de error
-            if (!(msg.equals(""))){
-                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-            //Sino limpiar los campos
-            else {
-                JOptionPane.showMessageDialog(null, "Usuario ingresado con exito.","Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
-                limpiarCampos(jpUsuario);
-            }
-        }
-
-        //Sino muestra un dialogo de error
-        else {
-            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Usuario", JOptionPane.ERROR_MESSAGE);
-        }
+//        String msg;
+//
+//        //Crea una hash con todos los datos del usuario introducidos
+//        Usuario usuario = null; //armarUsuario
+//
+//        //Si se han ingresado los datos del usuario
+//        if (!(usuario.getNombre().equals("") || usuario.getContrasenia().equals("") || usuario.getPerfil() == null)){
+//
+//            //Se intenta grabar un usuario en la Base de Datos
+//            msg = ControladorSeguridad.getInstancia().ingresarUsuario(usuario);
+//
+//            //Si se produce un error mostrar el dialogo de error
+//            if (!(msg.equals(""))){
+//                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//            //Sino limpiar los campos
+//            else {
+//                JOptionPane.showMessageDialog(null, "Usuario ingresado con exito.","Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
+//                limpiarCampos(jpUsuario);
+//            }
+//        }
+//
+//        //Sino muestra un dialogo de error
+//        else {
+//            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Usuario", JOptionPane.ERROR_MESSAGE);
+//        }
 }//GEN-LAST:event_jbNuevoUsuarioMouseClicked
 
     private void jbBuscarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarUsuarioMouseClicked
 
-        //Verifica que el nombre de usuario no sea nulo
-        if (tfNombreUsuario.getText()==null) {
-            tfNombreUsuario.setText("");
-        }
-
-        //Crea una hash con los datos del usuario
-        //this.objetos = usuarioAObjeto(ControladorSeguridad.getInstancia().buscarUsuario(armarUsuario()));
-        this.objetos = aObjeto(ControladorSeguridad.getInstancia().buscarUsuario(armarUsuario()));
-
-        //Carga la busqueda
-        Buscar buscar = new Buscar(objetos);
-        limpiarCampos(jpUsuario);
-        buscar.setVisible(true);
-        //buscar.cargarUsuarios(usuarios);
-
-        tfNombreUsuario.setText(ultimoUsuario.getNombre());
-        jpfContraseniaUsuario.setText(ultimoUsuario.getContrasenia());
-        //cbPerfilUsuario.setSelectedItem(ultimoUsuario.getPerfil().toString());
+//        //Verifica que el nombre de usuario no sea nulo
+//        if (tfNombreUsuario.getText()==null) {
+//            tfNombreUsuario.setText("");
+//        }
+//
+//        //Crea una hash con los datos del usuario
+//        //this.objetos = usuarioAObjeto(ControladorSeguridad.getInstancia().buscarUsuario(armarUsuario()));
+//        this.objetos = aObjeto(ControladorSeguridad.getInstancia().buscarUsuario(armarUsuario()));
+//
+//        //Carga la busqueda
+//        Buscar buscar = new Buscar(objetos);
+//        limpiarCampos(jpUsuario);
+//        buscar.setVisible(true);
+//        //buscar.cargarUsuarios(usuarios);
+//
+//        tfNombreUsuario.setText(ultimoUsuario.getNombre());
+//        jpfContraseniaUsuario.setText(ultimoUsuario.getContrasenia());
+//        //cbPerfilUsuario.setSelectedItem(ultimoUsuario.getPerfil().toString());
 
     }//GEN-LAST:event_jbBuscarUsuarioMouseClicked
 
     private void cbObjetoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbObjetoMouseClicked
 
-        List<Perfil> perfiles = null;
-        List<Permiso> permisos = null;
-
-        if (!(ultimoPerfil == null)) {
-
-            perfiles = ControladorSeguridad.getInstancia().buscarPerfil(ultimoPerfil);
-            permisos = perfiles.get(0).getPermisos();
-
-            if (!(permisos == null)) {
-
-                for (int i = 0; i <= permisos.size() - 1; i++) {
-
-                    if ( permisos.get(i).getObjeto().equals( cbObjeto.getSelectedItem().toString() ) ) {
-
-                        jcbLeer.setSelected(permisos.get(i).getLeer());
-                        jcbInsertar.setSelected(permisos.get(i).getInsertar());
-                        jcbActualizar.setSelected(permisos.get(i).getActualizar());
-                        jcbBorrar.setSelected(permisos.get(i).getBorrar());
-
-                    }
-                }
-            }
-        }
+//        List<Perfil> perfiles = null;
+//        List<Permiso> permisos = null;
+//
+//        if (!(ultimoPerfil == null)) {
+//
+//            perfiles = ControladorSeguridad.getInstancia().buscarPerfil(ultimoPerfil);
+//            permisos = perfiles.get(0).getPermisos();
+//
+//            if (!(permisos == null)) {
+//
+//                for (int i = 0; i <= permisos.size() - 1; i++) {
+//
+//                    if ( permisos.get(i).getObjeto().equals( cbObjeto.getSelectedItem().toString() ) ) {
+//
+//                        jcbLeer.setSelected(permisos.get(i).getLeer());
+//                        jcbInsertar.setSelected(permisos.get(i).getInsertar());
+//                        jcbActualizar.setSelected(permisos.get(i).getActualizar());
+//                        jcbBorrar.setSelected(permisos.get(i).getBorrar());
+//
+//                    }
+//                }
+//            }
+//        }
 }//GEN-LAST:event_cbObjetoMouseClicked
 
     private void jbAsignarPermisoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbAsignarPermisoMouseClicked
 
-        List<Permiso> permisos;
-        Permiso permiso = new Permiso();
-
-        permiso.setObjeto(cbObjeto.getSelectedItem().toString() == null ? "" : cbObjeto.getSelectedItem().toString());
-        permiso.setLeer(jcbLeer.isSelected());
-        permiso.setInsertar(jcbInsertar.isSelected());
-        permiso.setActualizar(jcbActualizar.isSelected());
-        permiso.setBorrar(jcbBorrar.isSelected());
-
-        permisos = ultimoPerfil.getPermisos();
-        permisos.setElementAt(permiso, cbObjeto.getSelectedIndex());
-        ultimoPerfil.setPermisos(permisos);
+//        List<Permiso> permisos;
+//        Permiso permiso = new Permiso();
+//
+//        permiso.setObjeto(cbObjeto.getSelectedItem().toString() == null ? "" : cbObjeto.getSelectedItem().toString());
+//        permiso.setLeer(jcbLeer.isSelected());
+//        permiso.setInsertar(jcbInsertar.isSelected());
+//        permiso.setActualizar(jcbActualizar.isSelected());
+//        permiso.setBorrar(jcbBorrar.isSelected());
+//
+//        permisos = ultimoPerfil.getPermisos();
+//        permisos.setElementAt(permiso, cbObjeto.getSelectedIndex());
+//        ultimoPerfil.setPermisos(permisos);
 
     }//GEN-LAST:event_jbAsignarPermisoMouseClicked
 
     private void jbNuevoPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNuevoPerfilMouseClicked
 
-        String msg;
-
-        //Crea una hash con todos los datos del perfil introducidos
-        HashMap<String, Object> hashPerfil = armarHashPerfil();
-
-        //Si se han ingresado los datos del perfil
-        if (!(hashPerfil.get("nombre").equals("") )){
-
-            //Se intenta grabar un perfil en la Base de Datos
-            msg = ControladorSeguridad.getInstancia().ingresarPerfil(hashPerfil);
-
-            //Si se produce un error mostrar el dialogo de error
-            if (!(msg.equals(""))){
-                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-            //Sino limpiar los campos
-            else {
-                JOptionPane.showMessageDialog(null, "Perfil ingresado con exito.","Alta Perfil", JOptionPane.INFORMATION_MESSAGE);
-                limpiarCampos(jpPerfiles);
-            }
-        }
-
-        //Sino muestra un dialogo de error
-        else {
-            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Usuario", JOptionPane.ERROR_MESSAGE);
-        }
+//        String msg;
+//
+//        //Crea una hash con todos los datos del perfil introducidos
+//        HashMap<String, Object> hashPerfil = armarHashPerfil();
+//
+//        //Si se han ingresado los datos del perfil
+//        if (!(hashPerfil.get("nombre").equals("") )){
+//
+//            //Se intenta grabar un perfil en la Base de Datos
+//            msg = ControladorSeguridad.getInstancia().ingresarPerfil(hashPerfil);
+//
+//            //Si se produce un error mostrar el dialogo de error
+//            if (!(msg.equals(""))){
+//                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//            //Sino limpiar los campos
+//            else {
+//                JOptionPane.showMessageDialog(null, "Perfil ingresado con exito.","Alta Perfil", JOptionPane.INFORMATION_MESSAGE);
+//                limpiarCampos(jpPerfiles);
+//            }
+//        }
+//
+//        //Sino muestra un dialogo de error
+//        else {
+//            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Usuario", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_jbNuevoPerfilMouseClicked
 
     private void jbBuscarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarPerfilMouseClicked
 
-        Perfil perfil = new Perfil();
-        perfil.setNombre(tfNombrePerfil.getText() == null ? "" : tfNombrePerfil.getText()));
-
-        //Realiza la verdadera busqueda
-        //this.objetos = perfilAObjeto(ControladorSeguridad.getInstancia().buscarPerfil(hashPerfil));
-        this.objetos = aObjeto(ControladorSeguridad.getInstancia().buscarPerfil(perfil));
-
-        //Cargar la busqueda
-        Buscar buscar = new Buscar(objetos);
-        limpiarCampos(jpPerfiles);
-        buscar.setVisible(true);
-        //buscar.cargarPerfiles(perfiles);
-
-        tfNombrePerfil.setText(ultimoPerfil.getNombre());
-        tfDescripcionPerfil.setText(ultimoPerfil.getDescipcion());
+//        Perfil perfil = new Perfil();
+//        perfil.setNombre(tfNombrePerfil.getText() == null ? "" : tfNombrePerfil.getText()));
+//
+//        //Realiza la verdadera busqueda
+//        //this.objetos = perfilAObjeto(ControladorSeguridad.getInstancia().buscarPerfil(hashPerfil));
+//        this.objetos = aObjeto(ControladorSeguridad.getInstancia().buscarPerfil(perfil));
+//
+//        //Cargar la busqueda
+//        Buscar buscar = new Buscar(objetos);
+//        limpiarCampos(jpPerfiles);
+//        buscar.setVisible(true);
+//        //buscar.cargarPerfiles(perfiles);
+//
+//        tfNombrePerfil.setText(ultimoPerfil.getNombre());
+//        tfDescripcionPerfil.setText(ultimoPerfil.getDescipcion());
 }//GEN-LAST:event_jbBuscarPerfilMouseClicked
 
     private void jpPerfilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPerfilesMouseClicked

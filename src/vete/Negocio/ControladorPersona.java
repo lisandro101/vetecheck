@@ -28,7 +28,7 @@ public class ControladorPersona {
 
         String cadenaError = "";
 
-        GestorPersona.getInstancia().ingresar(persona);
+         GestorPersona.getInstancia().ingresar(persona);
 
         return cadenaError;
 

@@ -1,16 +1,6 @@
-/*
- * Main.java
- * 
- * Created on 18/06/2007, 14:42:13
- * 
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package vete.Interfaz;
 
 import javax.swing.UIManager;
-// import vete.Persistencia.Fachada;
 
 /**
  *
@@ -21,7 +11,7 @@ public class Main {
     /**
      * 
      */
-    // public static MainFrame frm = null;
+    public static MainFrame frm = null;
     public static Login init = null;
     
 
@@ -41,9 +31,11 @@ public class Main {
         }
         
        
-       init = new Login();
-    //  Fachada.getInstancia();
-       init.setVisible(true);
+//       init = new Login();
+//       init.setVisible(true);
+
+       frm = new MainFrame();
+       frm.setVisible(true);
     
     }
 

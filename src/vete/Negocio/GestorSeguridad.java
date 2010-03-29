@@ -57,7 +57,8 @@ public class GestorSeguridad {
     public List<Usuario> buscarUsuario(Usuario usuario) {
 
         //Busca Cliente en la persistencia
-        List<Usuario> usuarios = Repositorio.getInstancia().buscarUsuario(usuario);
+        //FIXME
+        List<Usuario> usuarios = Repositorio.getInstancia().buscar(Usuario.class, "");
 
         return usuarios;
 
@@ -66,7 +67,8 @@ public class GestorSeguridad {
     public List<Perfil> buscarPerfil(Perfil perfil) {
 
         //Busca Perfil en la persistencia
-        List<Perfil> perfiles = Repositorio.getInstancia().buscarPerfil(perfil);
+        //FIXME
+        List<Perfil> perfiles = Repositorio.getInstancia().buscar(Perfil.class, "");
 
         return perfiles;
 
@@ -75,7 +77,8 @@ public class GestorSeguridad {
     public List<Permiso> buscarPermiso(Permiso permiso) {
 
         //Busca Cliente en la persistencia
-        List<Permiso> permisos = Repositorio.getInstancia().buscarPermiso(permiso);
+        //FIXME
+        List<Permiso> permisos = Repositorio.getInstancia().buscar(Permiso.class, "");
 
         return permisos;
 
@@ -94,13 +97,13 @@ public class GestorSeguridad {
             if (permiso.getObjeto().equals(objeto)) {
 
                 if (tipoPermiso.equals("INSERTAR")) {
-                    puede = permiso.getInsertar();
+                    puede = permiso.isInsertar();
                 } else if (tipoPermiso.equals("ACTUALIZAR")) {
-                    puede = permiso.getActualizar();
+                    puede = permiso.isActualizar();
                 } else if (tipoPermiso.equals("LEER")) {
-                    puede = permiso.getLeer();
+                    puede = permiso.isLeer();
                 } else if (tipoPermiso.equals("BORRAR")) {
-                    puede = permiso.getBorrar();
+                    puede = permiso.isBorrar();
                 } else {
                     JOptionPane.showMessageDialog(null, "ERROR. Permiso no existente.", "Consulta Permiso", JOptionPane.ERROR_MESSAGE);
                 }
