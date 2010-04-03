@@ -16,6 +16,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     /* Atributos */
     private PanelArticulos panelArticulos;
+    private PanelClientes panelClientes;
     private PanelUsuarios panelUsuarios;
     private PanelProveedores panelProveedores;
     private PanelConfigurar panelConfigurar;
@@ -35,15 +36,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void inicializar() {
         panelProveedores = new PanelProveedores();
+        panelClientes = new PanelClientes();
         panelArticulos = new PanelArticulos();
         panelUsuarios = new PanelUsuarios();
         panelConfigurar = new PanelConfigurar();
         panelComprar = new PanelComprar();
         panelVender = new PanelVender();
 
-        jtpPrincipal.add("    Proveedores    ", panelProveedores);
-        jtpPrincipal.add("     Articulos     ", panelArticulos);
-        jtpPrincipal.add("     Usuarios      ", panelUsuarios);
+        jtpPrincipal.add("     Proveedores   ", panelProveedores);
+        jtpPrincipal.add("      Clientes     ", panelClientes);
+        jtpPrincipal.add("      Articulos    ", panelArticulos);
+        jtpPrincipal.add("      Usuarios     ", panelUsuarios);
         jtpPrincipal.add("      Vender       ", panelVender);
         jtpPrincipal.add("      Comprar      ", panelComprar);
         jtpPrincipal.add("     Configurar    ", panelConfigurar);

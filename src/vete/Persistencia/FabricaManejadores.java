@@ -21,7 +21,7 @@ class FabricaManejadores {
     private Map<Long, Manejador> manejadores;
     
     private FabricaManejadores() {
-        emf = Persistence.createEntityManagerFactory("vetePU");
+        emf = Persistence.createEntityManagerFactory("VetePU");
         manejadores = new HashMap<Long, Manejador>(CANTIDAD_MANEJADORES);
     }
     

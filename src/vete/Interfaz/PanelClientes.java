@@ -1,12 +1,17 @@
 package vete.Interfaz;
 
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import vete.Entidad.Cliente;
+import vete.Negocio.ControladorCliente;
+
 /**
  *
- * @author Silvina
+ * @author Lisandro
  */
 public class PanelClientes extends javax.swing.JPanel {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -7678708138412181288L;
 
     /** Creates new form PanelClientes */
     public PanelClientes() {
@@ -37,8 +42,6 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         tfCuitCliente = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        cbTelefonoCliente = new javax.swing.JComboBox();
-        tfCodigoTelefonoCliente = new javax.swing.JTextField();
         tfNumeroTelefonoCliente = new javax.swing.JTextField();
         tfMailCliente = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -75,7 +78,7 @@ public class PanelClientes extends javax.swing.JPanel {
         jbOpcionesCliente = new javax.swing.JButton();
         jbLimpiarCliente = new javax.swing.JButton();
 
-        jpCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        jpCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         tfBuscarCliente.setToolTipText("Busqueda rapida");
         tfBuscarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -92,13 +95,13 @@ public class PanelClientes extends javax.swing.JPanel {
             }
         });
 
-        spCliente.setDividerLocation(200);
+        spCliente.setDividerLocation(100);
         spCliente.setDividerSize(10);
         spCliente.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jspTablaCliente.setPreferredSize(new java.awt.Dimension(468, 424));
 
-        jtCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jtCliente.setFont(new java.awt.Font("Arial", 0, 12));
         jtCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -184,29 +187,14 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 12));
         jLabel12.setText("Teléfono");
 
-        cbTelefonoCliente.setFont(new java.awt.Font("Arial", 0, 12));
-        cbTelefonoCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Casa", "Trabajo", "Movil" }));
-        cbTelefonoCliente.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbTelefonoClienteItemStateChanged(evt);
-            }
-        });
-        cbTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbTelefonoClienteActionPerformed(evt);
-            }
-        });
-
-        tfCodigoTelefonoCliente.setFont(new java.awt.Font("Arial", 0, 12));
-
-        tfNumeroTelefonoCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        tfNumeroTelefonoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tfNumeroTelefonoCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tfNumeroTelefonoClienteFocusLost(evt);
             }
         });
 
-        tfMailCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        tfMailCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12));
         jLabel13.setText("Mail");
@@ -214,12 +202,13 @@ public class PanelClientes extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Arial", 0, 12));
         jLabel14.setText("Descuento");
 
-        tfDescuentoCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        tfDescuentoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tfDescuentoCliente.setText("0.0");
 
-        cbEstadoDescuentoCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        cbEstadoDescuentoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbEstadoDescuentoCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", " %" }));
 
-        cbCondicionIvaCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        cbCondicionIvaCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbCondicionIvaCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Consumidor Final", "Responsable Inscripto" }));
 
         jLabel67.setFont(new java.awt.Font("Arial", 0, 12));
@@ -234,38 +223,34 @@ public class PanelClientes extends javax.swing.JPanel {
                 .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpGeneralClienteLayout.createSequentialGroup()
                         .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(tfCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpGeneralClienteLayout.createSequentialGroup()
-                        .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpGeneralClienteLayout.createSequentialGroup()
                                 .addComponent(tfDescuentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbEstadoDescuentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpGeneralClienteLayout.createSequentialGroup()
-                                .addComponent(tfCodigoTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfNumeroTelefonoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
                             .addComponent(jLabel67)
                             .addGroup(jpGeneralClienteLayout.createSequentialGroup()
-                                .addComponent(cbCondicionIvaCliente, 0, 335, Short.MAX_VALUE)
+                                .addComponent(cbCondicionIvaCliente, 0, 339, Short.MAX_VALUE)
                                 .addGap(93, 93, 93))))
-                    .addComponent(jLabel12))
+                    .addGroup(jpGeneralClienteLayout.createSequentialGroup()
+                        .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfNumeroTelefonoCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfCodigoCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                            .addComponent(jLabel12))
+                        .addGap(6, 6, 6)
+                        .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(tfMailCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tfCuitCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                        .addComponent(tfMailCliente)))
+                .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCuitCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jpGeneralClienteLayout.setVerticalGroup(
@@ -282,16 +267,16 @@ public class PanelClientes extends javax.swing.JPanel {
                     .addComponent(tfNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfCuitCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpGeneralClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfNumeroTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpGeneralClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfMailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfNumeroTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfMailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCodigoTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpGeneralClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpGeneralClienteLayout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -303,7 +288,7 @@ public class PanelClientes extends javax.swing.JPanel {
                         .addComponent(jLabel67)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbCondicionIvaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jtpCliente.addTab("General", jpGeneralCliente);
@@ -443,14 +428,14 @@ public class PanelClientes extends javax.swing.JPanel {
             jpDetalleClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDetalleClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
+                .addComponent(jScrollPane10)
                 .addContainerGap())
         );
         jpDetalleClienteLayout.setVerticalGroup(
             jpDetalleClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDetalleClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -461,11 +446,16 @@ public class PanelClientes extends javax.swing.JPanel {
         pbCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
 
         jbNuevoCliente.setBackground(new java.awt.Color(255, 255, 255));
-        jbNuevoCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        jbNuevoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jbNuevoCliente.setText("Nuevo");
         jbNuevoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbNuevoClienteMouseClicked(evt);
+            }
+        });
+        jbNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoClienteActionPerformed(evt);
             }
         });
 
@@ -491,7 +481,7 @@ public class PanelClientes extends javax.swing.JPanel {
         jbVenderCliente.setFont(new java.awt.Font("Arial", 0, 12));
         jbVenderCliente.setText("Vender");
 
-        jbOpcionesCliente.setFont(new java.awt.Font("Arial", 0, 12));
+        jbOpcionesCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jbOpcionesCliente.setText("Opciones");
 
         jbLimpiarCliente.setFont(new java.awt.Font("Arial", 0, 12));
@@ -533,7 +523,7 @@ public class PanelClientes extends javax.swing.JPanel {
                 .addComponent(jbVenderCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbLimpiarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jbOpcionesCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -546,7 +536,7 @@ public class PanelClientes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jpClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpClienteLayout.createSequentialGroup()
-                        .addComponent(spCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                        .addComponent(spCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpClienteLayout.createSequentialGroup()
@@ -565,7 +555,7 @@ public class PanelClientes extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pbCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(spCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
+                    .addComponent(spCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -573,12 +563,10 @@ public class PanelClientes extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
             .addComponent(jpCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 372, Short.MAX_VALUE)
             .addComponent(jpCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -600,7 +588,6 @@ public class PanelClientes extends javax.swing.JPanel {
 //
 //        //Cargar la busqueda en la JTable
 //        cargarJTableCliente(clientes);
-
     }//GEN-LAST:event_tfBuscarClienteKeyTyped
 
     private void jbBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbBuscarClienteMouseClicked
@@ -620,81 +607,17 @@ public class PanelClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_jbBuscarClienteMouseClicked
 
     private void jtClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtClienteMouseClicked
-
 //        //Carga el cliente seleccionado en la jTable en los textFields
 //        cargarCamposCliente(clientes.get(jtCliente.getSelectedRow()));
     }//GEN-LAST:event_jtClienteMouseClicked
 
-    private void cbTelefonoClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTelefonoClienteItemStateChanged
-
-}//GEN-LAST:event_cbTelefonoClienteItemStateChanged
-
-    private void cbTelefonoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTelefonoClienteActionPerformed
-
-//        antesElegido = ultimoElegido;
-//        ultimoElegido = cbTelefonoCliente.getSelectedIndex();
-//
-//        if (ultimoTelefono == null) {
-//
-//            ultimoTelefono = new List<Telefono>();
-//
-//            for (int i=0; i < cbTelefonoCliente.getItemCount(); i++){
-//                Telefono iTelefono = new Telefono();
-//                ultimoTelefono.insertElementAt(iTelefono, i);
-//            }
-//        }
-//
-//        //Guarda el telefono que se habia seleccionado antes de cambiar la seleccion
-//        ultimoTelefono.get(antesElegido).setNombre(cbTelefonoCliente.getItemAt(antesElegido).toString() == null ? "" : cbTelefonoCliente.getItemAt(antesElegido).toString());
-//        ultimoTelefono.get(antesElegido).setCodigo(tfCodigoTelefonoCliente.getText() == null ? "" : tfCodigoTelefonoCliente.getText());
-//        ultimoTelefono.get(antesElegido).setNumero(tfNumeroTelefonoCliente.getText() == null ? "" : tfNumeroTelefonoCliente.getText());
-//
-//        //Carga la info del telefono que se seleccionó
-//        tfCodigoTelefonoCliente.setText(ultimoTelefono.get(ultimoElegido).getCodigo());
-//        tfNumeroTelefonoCliente.setText(ultimoTelefono.get(ultimoElegido).getNumero());
-    }//GEN-LAST:event_cbTelefonoClienteActionPerformed
-
     private void tfNumeroTelefonoClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroTelefonoClienteFocusLost
-
 }//GEN-LAST:event_tfNumeroTelefonoClienteFocusLost
 
     private void jbNuevoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNuevoClienteMouseClicked
-
-//        String msg;
-//
-//        //Crea una hash con todos los datos del cliente introducidos
-//        HashMap<String, Object> hashCliente = armarHashCliente();
-//
-//        //Si se ha ingresado un nombre de cliente
-//        if (!(hashCliente.get("nombre").equals("") || hashCliente.get("codigo").equals("") )){
-//
-//            //Se intenta grabar un vendedor en la Base de Datos
-//            msg = ControladorCliente.getInstancia().ingresar(hashCliente);
-//
-//            //Si se produce un error mostrar el dialogo de error
-//            if (!(msg.equals(""))){
-//                JOptionPane.showMessageDialog(null, msg,"ERROR", JOptionPane.ERROR_MESSAGE);
-//            }
-//            //Sino limpiar los campos
-//            else {
-//                JOptionPane.showMessageDialog(null, "Cliente ingresado con exito.","Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
-//
-//                limpiarCampos(jpGeneralCliente);
-//                limpiarCampos(jpDomicilioCliente);
-//                jepDetalleCliente.setText("");
-//
-//            }
-//        }
-//
-//        //Sino muestra un dialogo de error
-//        else {
-//            JOptionPane.showMessageDialog(null, "Falta ingresar datos","Alta Cliente", JOptionPane.ERROR_MESSAGE);
-//        }
-
     }//GEN-LAST:event_jbNuevoClienteMouseClicked
 
     private void jbModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbModificarClienteMouseClicked
-
 //        //Modifica el ultimo cliente seleccionado
 //        ControladorCliente.getInstancia().actualizar(cargarCliente(ultimoCliente));
 //
@@ -705,26 +628,51 @@ public class PanelClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_jbModificarClienteMouseClicked
 
     private void jbEliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEliminarClienteMouseClicked
-
 //        //eliminar el ultimo cliente seleccionado
 //        ControladorCliente.getInstancia().borrar(ultimoCliente);
     }//GEN-LAST:event_jbEliminarClienteMouseClicked
 
     private void jbLimpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarClienteActionPerformed
-
 //        limpiarCampos(jpGeneralCliente);
 //        limpiarCampos(jpDomicilioCliente);
 //        jepDetalleCliente.setText("");
     }//GEN-LAST:event_jbLimpiarClienteActionPerformed
 
+    private void jbNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoClienteActionPerformed
+        String msg;
 
+        //Crea una hash con todos los datos del cliente introducidos
+        Cliente cliente = armarCliente();
+
+        //Si se ha ingresado un nombre de cliente
+        if (!(cliente.getNombre().equals("") || cliente.getCodigo().equals(""))) {
+
+            //Se intenta grabar un vendedor en la Base de Datos
+            msg = ControladorCliente.getInstancia().ingresar(cliente);
+
+            //Si se produce un error mostrar el dialogo de error
+            if (!(msg.equals(""))) {
+                JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
+            } //Sino limpiar los campos
+            else {
+                JOptionPane.showMessageDialog(null, "Cliente ingresado con exito.", "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
+
+//                limpiarCampos(jpGeneralCliente);
+//                limpiarCampos(jpDomicilioCliente);
+                jepDetalleCliente.setText("");
+
+            }
+        } //Sino muestra un dialogo de error
+        else {
+            JOptionPane.showMessageDialog(null, "Falta ingresar datos", "Alta Cliente", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbNuevoClienteActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbCondicionIvaCliente;
     private javax.swing.JComboBox cbEstadoDescuentoCliente;
     private javax.swing.JComboBox cbLocalidadCliente;
     private javax.swing.JComboBox cbPaisCliente;
     private javax.swing.JComboBox cbProvinciaCliente;
-    private javax.swing.JComboBox cbTelefonoCliente;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -762,7 +710,6 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JTextField tfBuscarCliente;
     private javax.swing.JTextField tfCalleCliente;
     private javax.swing.JFormattedTextField tfCodigoCliente;
-    private javax.swing.JTextField tfCodigoTelefonoCliente;
     private javax.swing.JTextField tfCuitCliente;
     private javax.swing.JTextField tfDeptoCliente;
     private javax.swing.JTextField tfDescuentoCliente;
@@ -773,4 +720,18 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JTextField tfPisoCliente;
     // End of variables declaration//GEN-END:variables
 
+    private Cliente armarCliente() {
+
+        Cliente c = new Cliente();
+
+        c.setCodigo(tfCodigoCliente.getText());
+        c.setNombre(tfNombreCliente.getText());
+        c.setCuit(tfCuitCliente.getText());
+        c.setMail(tfMailCliente.getText());
+        c.setDescuento(Double.parseDouble(tfDescuentoCliente.getText()));
+        c.setCondicionIva(cbCondicionIvaCliente.getSelectedItem().toString());
+
+        return c;
+
+    }
 }
