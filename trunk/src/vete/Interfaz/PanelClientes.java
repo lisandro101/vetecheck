@@ -1,9 +1,9 @@
 package vete.Interfaz;
 
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import vete.Entidad.Cliente;
 import vete.Negocio.ControladorCliente;
+import vete.Negocio.Utilidades;
 
 /**
  *
@@ -12,6 +12,8 @@ import vete.Negocio.ControladorCliente;
 public class PanelClientes extends javax.swing.JPanel {
 
     private static final long serialVersionUID = -7678708138412181288L;
+
+    private Cliente ultimoCliente;
 
     /** Creates new form PanelClientes */
     public PanelClientes() {
@@ -618,24 +620,30 @@ public class PanelClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_jbNuevoClienteMouseClicked
 
     private void jbModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbModificarClienteMouseClicked
-//        //Modifica el ultimo cliente seleccionado
-//        ControladorCliente.getInstancia().actualizar(cargarCliente(ultimoCliente));
-//
-//
-//        limpiarCampos(jpGeneralCliente);
-//        limpiarCampos(jpDomicilioCliente);
-//        jepDetalleCliente.setText("");
+
+        //Modifica el ultimo cliente seleccionado
+        ControladorCliente.getInstancia().actualizar(ultimoCliente);
+
+
+        Utilidades.getInstancia().limpiarCampos(jpGeneralCliente);
+        Utilidades.getInstancia().limpiarCampos(jpDomicilioCliente);
+        jepDetalleCliente.setText("");
+
     }//GEN-LAST:event_jbModificarClienteMouseClicked
 
     private void jbEliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEliminarClienteMouseClicked
-//        //eliminar el ultimo cliente seleccionado
-//        ControladorCliente.getInstancia().borrar(ultimoCliente);
+
+        //eliminar el ultimo cliente seleccionado
+        ControladorCliente.getInstancia().borrar(ultimoCliente);
+
     }//GEN-LAST:event_jbEliminarClienteMouseClicked
 
     private void jbLimpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarClienteActionPerformed
-//        limpiarCampos(jpGeneralCliente);
-//        limpiarCampos(jpDomicilioCliente);
-//        jepDetalleCliente.setText("");
+        
+        Utilidades.getInstancia().limpiarCampos(jpGeneralCliente);
+        Utilidades.getInstancia().limpiarCampos(jpDomicilioCliente);
+        jepDetalleCliente.setText("");
+
     }//GEN-LAST:event_jbLimpiarClienteActionPerformed
 
     private void jbNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoClienteActionPerformed
@@ -657,8 +665,8 @@ public class PanelClientes extends javax.swing.JPanel {
             else {
                 JOptionPane.showMessageDialog(null, "Cliente ingresado con exito.", "Alta Cliente", JOptionPane.INFORMATION_MESSAGE);
 
-//                limpiarCampos(jpGeneralCliente);
-//                limpiarCampos(jpDomicilioCliente);
+                Utilidades.getInstancia().limpiarCampos(jpGeneralCliente);
+                Utilidades.getInstancia().limpiarCampos(jpDomicilioCliente);
                 jepDetalleCliente.setText("");
 
             }
