@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>vete.Entidad.Articulo</class>
     <class>vete.Entidad.Cliente</class>
+    <class>vete.Entidad.DetalleFactura</class>
     <class>vete.Entidad.Domicilio</class>
     <class>vete.Entidad.Factura</class>
     <class>vete.Entidad.FacturaCompra</class>
@@ -23,7 +24,7 @@
       <property name="javax.persistence.jdbc.password" value="admin"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.user" value="admin"/>
-      <property name="eclipselink.ddl-generation" value="create-tables"/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>
