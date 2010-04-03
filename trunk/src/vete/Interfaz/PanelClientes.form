@@ -65,7 +65,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="pbCliente" alignment="1" max="32767" attributes="1"/>
-                      <Component id="spCliente" alignment="1" pref="322" max="32767" attributes="1"/>
+                      <Component id="spCliente" alignment="1" pref="329" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -94,7 +94,7 @@
         </Component>
         <Container class="javax.swing.JSplitPane" name="spCliente">
           <Properties>
-            <Property name="dividerLocation" type="int" value="200"/>
+            <Property name="dividerLocation" type="int" value="100"/>
             <Property name="dividerSize" type="int" value="10"/>
             <Property name="orientation" type="int" value="0"/>
           </Properties>
@@ -160,19 +160,8 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tfCodigoCliente" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel11" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="tfNombreCliente" alignment="0" pref="467" max="32767" attributes="1"/>
-                                      </Group>
-                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="1">
@@ -180,16 +169,10 @@
                                               <EmptySpace min="-2" max="-2" attributes="0"/>
                                               <Component id="cbEstadoDescuentoCliente" min="-2" pref="44" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="cbTelefonoCliente" alignment="0" min="-2" pref="135" max="-2" attributes="2"/>
                                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="tfCodigoTelefonoCliente" min="-2" pref="61" max="-2" attributes="2"/>
-                                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                                              <Component id="tfNumeroTelefonoCliente" pref="365" max="32767" attributes="0"/>
-                                          </Group>
                                           <Component id="jLabel67" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="cbCondicionIvaCliente" pref="339" max="32767" attributes="0"/>
@@ -197,16 +180,28 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="tfNumeroTelefonoCliente" alignment="0" max="32767" attributes="1"/>
+                                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="tfCodigoCliente" alignment="0" pref="100" max="32767" attributes="1"/>
+                                          </Group>
+                                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfMailCliente" alignment="0" pref="467" max="32767" attributes="1"/>
+                                          <Component id="jLabel11" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <Component id="tfNombreCliente" alignment="0" pref="467" max="32767" attributes="1"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel15" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="tfCuitCliente" alignment="0" pref="151" max="32767" attributes="1"/>
-                                      <Component id="tfMailCliente" alignment="0" max="32767" attributes="1"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel15" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="tfCuitCliente" alignment="0" pref="151" max="32767" attributes="1"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -228,18 +223,19 @@
                                   <Component id="tfCuitCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel12" min="-2" pref="14" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfNumeroTelefonoCliente" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfMailCliente" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cbTelefonoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfNumeroTelefonoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfMailCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfCodigoTelefonoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
@@ -255,7 +251,7 @@
                                       <Component id="cbCondicionIvaCliente" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -314,31 +310,6 @@
                         <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="cbTelefonoCliente">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Arial" size="12" style="0"/>
-                        </Property>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="3">
-                            <StringItem index="0" value="Casa"/>
-                            <StringItem index="1" value="Trabajo"/>
-                            <StringItem index="2" value="Movil"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbTelefonoClienteItemStateChanged"/>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbTelefonoClienteActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="tfCodigoTelefonoCliente">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Arial" size="12" style="0"/>
-                        </Property>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JTextField" name="tfNumeroTelefonoCliente">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -377,6 +348,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="12" style="0"/>
                         </Property>
+                        <Property name="text" type="java.lang.String" value="0.0"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbEstadoDescuentoCliente">
@@ -701,7 +673,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane10" pref="61" max="32767" attributes="0"/>
+                              <Component id="jScrollPane10" pref="168" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -774,7 +746,7 @@
                       <Component id="jbVenderCliente" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jbLimpiarCliente" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                       <Component id="jbOpcionesCliente" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -794,6 +766,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbNuevoClienteMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNuevoClienteActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbModificarCliente">
