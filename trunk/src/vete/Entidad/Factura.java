@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
-import vete.Interfaz.DetalleFactura;
 import vete.Persistencia.IPersistente;
 
 /**
@@ -29,8 +28,8 @@ public class Factura implements Serializable, IPersistente {
     private long numero;
     private boolean borrado;
     
-//    @OneToMany
-//    private List<DetalleFactura> detalles;
+    @OneToMany
+    private List<DetalleFactura> detalles;
     @ManyToOne
     private FormaDePago formaDePago;
     @OneToMany
@@ -102,19 +101,19 @@ public class Factura implements Serializable, IPersistente {
         this.numero = numero;
     }
 
-//    /**
-//     * @return the detalles
-//     */
-//    public List<DetalleFactura> getDetalles() {
-//        return detalles;
-//    }
-//
-//    /**
-//     * @param detalles the detalles to set
-//     */
-//    public void setDetalles(List<DetalleFactura> detalles) {
-//        this.setDetalles(detalles);
-//    }
+    /**
+     * @return the detalles
+     */
+    public List<DetalleFactura> getDetalles() {
+        return detalles;
+    }
+
+    /**
+     * @param detalles the detalles to set
+     */
+    public void setDetalles(List<DetalleFactura> detalles) {
+        this.setDetalles(detalles);
+    }
 
     /**
      * @return the formaDePago
